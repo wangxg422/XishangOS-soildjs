@@ -1,8 +1,11 @@
 import type { Component } from "solid-js"
-import Layout from "./layout/index"
 
 const App: Component = () => {
-  return <Layout />
-}
+    return (
+      <>
+        <div>i am home of system</div>
+      </>
+    );
+};
 
 export default App;

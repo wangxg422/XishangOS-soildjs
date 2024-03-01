@@ -19,10 +19,16 @@
     "vite-plugin-solid": "^2.8.2"
   },
   "dependencies": {
+    "@solidjs/router": "^0.12.4",
+    "@tanstack/solid-query": "^5.24.1",
     "autoprefixer": "^10.4.17",
     "babel-plugin-solid-labels": "^0.15.1",
     "postcss": "^8.4.35",
+    "solid-immer": "^0.1.1",
     "solid-js": "^1.8.11",
-    "solid-labels": "^0.16.0"
+    "solid-labels": "^0.16.0",
+    "solid-toast": "^0.5.0",
+    "solid-zustand": "^1.8.0",
+    "zustand": "^4.5.1"
   }
 }
