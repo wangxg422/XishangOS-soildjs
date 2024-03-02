@@ -1,12 +1,11 @@
 import type { Component } from "solid-js"
-import ClassicLayout from "./classic"
+import ClassicLayout from "./LayoutClassic"
 
 const App: Component = () => {
     const layout = $signal("classic")
 
     return (
       <>
-      {layout}
       <Show when={layout === "classic"}>
         <ClassicLayout />
       </Show>
