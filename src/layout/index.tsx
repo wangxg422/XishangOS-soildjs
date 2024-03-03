@@ -3,7 +3,6 @@ import LayoutClassic from "./LayoutClassic";
 import LayoutVertical from "./LayoutVertical";
 import LayoutTransverse from "./LayoutTransverse";
 import LayoutColumns from "./LayoutColumns";
-
 import { Switch, Match } from "solid-js";
 
 const App: Component = () => {

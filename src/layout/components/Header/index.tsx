@@ -1,9 +1,11 @@
 import type { Component } from "solid-js";
+import "./index.scss";
 
 const App: Component = () => {
   return (
     <>
-      <div class="">
+      <div class="header">
+        header
       </div>
     </>
   );

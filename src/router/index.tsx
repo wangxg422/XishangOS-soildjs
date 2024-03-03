@@ -4,22 +4,34 @@ import { lazy } from "solid-js";
 const routes: RouteDefinition[] = [
   {
     path: "/",
-    component: lazy(() => import("../pages/home/index")),
-  },
-  {
-    path: "/login",
-    component: lazy(() => import("../pages/login/index")),
-  },
-  {
-    path: "/system",
-    component: lazy(() => import("../pages/system/index")),
     children: [
       {
-        path: "/home",
-        component: lazy(() => import("../pages/system/home/index")),
+        path: "/",
+        component: lazy(() => import("../pages/home/index")),
       },
-    ],
-  }
+      {
+        path: "/system",
+        children: [
+          {
+            path: "/",
+            component: lazy(() => import("../pages/system/home/index")),
+          },
+          {
+            path: "/home",
+            component: lazy(() => import("../pages/system/home/index")),
+          },
+          {
+            path: "/user",
+            component: lazy(() => import("../pages/system/SysUser/index")),
+          },
+          {
+            path: "/role",
+            component: lazy(() => import("../pages/system/SysRole/index")),
+          },
+        ],
+      },
+    ]
+  },
 ];
 
 export default routes;
