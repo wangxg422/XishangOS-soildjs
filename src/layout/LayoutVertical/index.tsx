@@ -9,12 +9,12 @@ import routes from "../../router";
 const App: Component = () => {
   return (
     <>
-      <div class="layout">
+      <div class="container">
         <div class="sidebar">
-          <div class="logo" style="{ width: isCollapse ? '65px' : '210px' }">
-            <div class="logo flx-center">
-              <img class="logo-img" src="@/assets/images/logo.png" alt="logo" />
-              <span v-show="!isCollapse" class="logo-text">
+          <div class="logo-details" style="{ width: isCollapse ? '65px' : '210px' }">
+            <div class="">
+              <img class="" src="@/assets/images/logo.png" alt="logo" />
+              <span v-show="!isCollapse" class="logo-name">
                 {"XishangOS"}
               </span>
             </div>
@@ -23,14 +23,14 @@ const App: Component = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div>
+        <div class="right">
+          <div class="header">
             <Header></Header>
           </div>
-          <div>
+          <div class="content">
             <Router>{routes}</Router>
           </div>
-          <div>
+          <div class="footer">
             <Footer />
           </div>
         </div>

@@ -4,7 +4,7 @@ import "./index.scss";
 const App: Component = () => {
   return (
     <>
-      <div class="header">
+      <div>
         header
       </div>
     </>
