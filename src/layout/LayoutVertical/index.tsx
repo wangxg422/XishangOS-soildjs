@@ -11,28 +11,26 @@ const App: Component = () => {
     <>
       <div class="container">
         <div class="sidebar">
-          <div class="logo-details" style="{ width: isCollapse ? '65px' : '210px' }">
-            <div class="">
-              <img class="" src="@/assets/images/logo.png" alt="logo" />
-              <span v-show="!isCollapse" class="logo-name">
-                {"XishangOS"}
-              </span>
-            </div>
-            <div>
+          <div class="logo-details">
+            <img
+              class="logo-img"
+              src="@/assets/images/logo.svg"
+              alt="logo"
+            />
+            <span class="logo-text">{"XishangOS"}</span>
+            <div class="menu">
               <Menu></Menu>
             </div>
           </div>
         </div>
-        <div class="right">
-          <div class="header">
-            <Header></Header>
-          </div>
-          <div class="content">
-            <Router>{routes}</Router>
-          </div>
-          <div class="footer">
-            <Footer />
-          </div>
+        <div class="header">
+          <Header></Header>
+        </div>
+        <div class="content">
+          <Router>{routes}</Router>
+        </div>
+        <div class="footer">
+          <Footer />
         </div>
       </div>
     </>

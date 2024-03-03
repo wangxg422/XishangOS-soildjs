@@ -14,69 +14,63 @@
   transition: all 0.5s ease;
 }
 
-.sidebar.close {
-  width: 78px;
+.menu {
+  width: 210px;
+  height: 100%;
+  color: white;
+  background-color: #24272e;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  margin: auto;
 }
 
-.sidebar .logo-details {
+.logo-details {
+  width: 210px;
+  height: 60px;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .logo-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-right: 6px;
+  }
+  .logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+    white-space: nowrap;
+  }
+}
+
+.header {
+  position: fixed;
+  left: 210px;
   height: 60px;
   width: 100%;
-  display: flex;
-  align-items: center;
+  background-color: white;
 }
 
-.sidebar .logo-details img {
-  font-size: 30px;
-  color: #fff;
-  height: 50px;
-  min-width: 78px;
-  text-align: center;
-  line-height: 50px;
-}
-.sidebar .logo-details .logo_name {
-  font-size: 22px;
-  color: #fff;
-  font-weight: 600;
-  transition: 0.3s ease;
-  transition-delay: 0.1s;
-}
-.sidebar.close .logo-details .logo_name {
-  transition-delay: 0s;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.sidebar .nav-links{
-    height: 100%;
-    padding: 30px 0 150px 0;
-    overflow: auto;
-  }
-  .sidebar.close .nav-links{
-    overflow: visible;
-  }
-  .sidebar .nav-links::-webkit-scrollbar{
-    display: none;
-  }
-.right {
-  width: calc(100%);
-  height: 100vh;
-  background-color: #e8e8e8;
+.content {
   position: absolute;
-  left: 200px;
-  top: 0;
-  .header {
-    height: 60px;
-    width: 100%;
-    background-color: red;
-  }
-  .content {
-    width: 100%;
-  }
-  .footer {
-    width: 100%;
-    height: 30px;
-    background-color: red;
-    position: absolute;
-    bottom: 0;
-  }
+  top: 60px;
+  left: 210px;
+  bottom: 30px;
+  right: 0;
+  background-color: gray;
+  overflow: auto;
+}
+
+.footer {
+  position: fixed;
+  left: 210px;
+  bottom: 0;
+  right: 0;
+  height: 30px;
+  width: 100%;
+  background-color: white;
 }

@@ -1,13 +1,37 @@
 import { Route } from "@solidjs/router";
 import type { Component } from "solid-js";
 import { Menu } from "./interface";
+import "./index.scss";
 
 const App: Component = () => {
   const menuList: Menu[] = $signal([
     { name: "首页", path: "/" },
-    { name: "系统主页", path: "/system" },
-    { name: "用户管理", path: "/system/user" },
-    { name: "角色管理", path: "/system/role" },
+    {
+      name: "系统管理",
+      path: "/system",
+      children: [
+        { name: "用户管理", path: "/system/user" },
+        { name: "角色管理", path: "/system/role" },
+      ],
+    },
+    {
+      name: "应用管理",
+      path: "/app",
+      children: [
+        {
+          name: "实例管理",
+          path: "/app/instance",
+        },
+        {
+          name: "安装包管理",
+          path: "/app/package",
+        },
+        {
+          name: "版本管理",
+          path: "/app/version",
+        },
+      ],
+    },
   ]);
 
   function renderMenu(menu: Menu): any {
@@ -17,18 +41,20 @@ const App: Component = () => {
     if (menu.children && menu.children.length !== 0) {
       return (
         <>
-          <summary>{menu.name}</summary>
-          <ul>
-            <For each={menu.children}>{(m, i) => renderMenu(m)}</For>
-          </ul>
+          <div class="menu-item">
+            <img src="../../../assets/images/menu.svg" alt="icon" />
+            <a href={menu.path}>{menu.name}</a>
+          </div>
+          <For each={menu.children}>{(m, i) => renderMenu(m)}</For>
         </>
       );
     }
     if (!menu.children || menu.children.length === 0) {
       return (
-        <li>
+        <div class="menu-item">
+          <img src="../../../assets/images/menu.svg" alt="icon" />
           <a href={menu.path}>{menu.name}</a>
-        </li>
+        </div>
       );
     }
   }

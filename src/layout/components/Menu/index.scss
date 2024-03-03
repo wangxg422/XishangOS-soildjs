@@ -1,0 +1,10 @@
+.menu-item {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 6px 0 6px 6px;
+    a {
+        margin-left: 6px;
+    }
+}
