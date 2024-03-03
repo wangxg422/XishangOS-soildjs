@@ -29,10 +29,6 @@ const App: Component = () => {
           </div>
           <div>
             <Router>{routes}</Router>
-            {/* <Router>
-              <Route path="/system/user" component={SysUser}></Route>
-              <Route path="/system/role" component={SysRole}></Route>
-            </Router> */}
           </div>
           <div>
             <Footer />
