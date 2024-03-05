@@ -1,5 +1,12 @@
 .desktop {
     padding: 0;
     margin: 0;
-    // background-image: url("../../assets/images/bg.JPG");
+    position: relative;
+    .datetime {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        margin: 0 auto;
+    }
 }
