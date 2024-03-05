@@ -1,8 +1,8 @@
 import type { Component } from "solid-js"
-import Layout from "./layout";
+import Desktop from "./pages/desktop";
 
 const App: Component = () => {
-  return <Layout />
+  return <Desktop />
 }
 
 export default App;
