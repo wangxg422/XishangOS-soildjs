@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import bgImage from "../../assets/images/bg.jpg";
 import "./index.scss";
 import { getWeekInChinese } from "../../utils/datetime";
+import AppBoard from "./components/appBoard";
 
 export default function Desktop() {
   let dateTime = $signal({
@@ -38,6 +39,7 @@ export default function Desktop() {
             <span>{dateTime.date}</span><span class="ml-2">{getWeekInChinese(dateTime.week)}</span>  
           </div>
         </div>
+        <div class="app-board"><AppBoard /></div>
       </div>
     </>
   );
