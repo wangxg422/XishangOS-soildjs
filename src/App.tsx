@@ -1,8 +1,12 @@
 import type { Component } from "solid-js"
-import Desktop from "./pages/desktop";
+import { Router } from "@solidjs/router";
+import routes from "./router";
+import "./index.css";
+import "./input.css";
+
 
 const App: Component = () => {
-  return <Desktop />
+  return <Router>{routes}</Router>
 }
 
 export default App;
