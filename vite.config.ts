@@ -5,6 +5,7 @@ import path from 'node:path';
 // import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
+  base: "/",
   plugins: [
     /* 
     Uncomment the following line to enable solid-devtools.
@@ -19,14 +20,19 @@ export default defineConfig({
       }}),
   ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+    alias: [
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, 'src')
+      }
+    ]
   },
   server: {
     port: 3000,
   },
   build: {
     target: 'esnext',
+    minify: "esbuild",
+    assetsDir: "assets",
   },
 });

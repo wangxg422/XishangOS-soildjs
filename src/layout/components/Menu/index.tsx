@@ -2,6 +2,7 @@ import { Route } from "@solidjs/router";
 import type { Component } from "solid-js";
 import { Menu } from "./interface";
 import "./index.scss";
+import icon from '@/assets/images/logo.svg';
 
 const App: Component = () => {
   const menuList: Menu[] = $signal([
@@ -42,7 +43,7 @@ const App: Component = () => {
       return (
         <>
           <div class="menu-item">
-            <img src="../../../assets/images/menu.svg" alt="icon" />
+            <img src={icon} alt="icon" />
             <a href={menu.path}>{menu.name}</a>
           </div>
           <For each={menu.children}>{(m, i) => renderMenu(m)}</For>
@@ -52,7 +53,7 @@ const App: Component = () => {
     if (!menu.children || menu.children.length === 0) {
       return (
         <div class="menu-item">
-          <img src="../../../assets/images/menu.svg" alt="icon" />
+          <img src={icon} alt="icon" />
           <a href={menu.path}>{menu.name}</a>
         </div>
       );
