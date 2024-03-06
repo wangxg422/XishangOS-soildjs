@@ -10,7 +10,16 @@
         margin: 0 auto;
     }
     .app-board {
-        height: 100vh;
+        height: 90%;
         width: 10%;
+        overflow: inherit;
+    }
+    .app-dashboard {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
