@@ -93,3 +93,5 @@ export namespace User {
     children?: ResDepartment[];
   }
 }
+
+

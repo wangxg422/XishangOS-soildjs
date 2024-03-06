@@ -1,0 +1,32 @@
+[
+    {
+        "appName": "控制中心",
+        "appCode": "设置",
+        "appAddress": "/control"
+    },
+    {
+        "appName": "系统设置",
+        "appCode": "settings",
+        "appAddress": "/settings"
+    },
+    {
+        "appName": "应用商店",
+        "appCode": "appStore",
+        "appAddress": "appAddress"
+    },
+    {
+        "appName": "监控告警中心",
+        "appCode": "monitorCenter",
+        "appAddress": "monitorCenter"
+    },
+    {
+        "appName": "用户结算中心",
+        "appCode": "userCenter",
+        "appAddress": "userCenter"
+    },
+    {
+        "appName": "计费结算中心",
+        "appCode": "payCenter",
+        "appAddress": "payCenter"
+    }
+]

@@ -1,0 +1,10 @@
+.app-item {
+    &:hover {
+        cursor: pointer;
+    }
+    .app-name {
+        &:hover {
+            color: #4791ee;
+        }
+    }
+}

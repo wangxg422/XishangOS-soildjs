@@ -1,4 +1,4 @@
-import { Login } from "../interface/index";
+import { Login } from "../../interface/login/index";
 import http from "../index";
 
 /**
