@@ -4,8 +4,9 @@ import "./index.scss";
 export default function App(props: any) {
   let appBg = $signal("app-bg");
 
-  const clickApp = () => {
+  const clickApp = (e: Event) => {
     //window.location.href = props.appInfo.appAddress;
+    e.stopPropagation()
   };
 
   const icon = props.appInfo.appIcon ? props.appInfo.appIcon : defaultAppImg;
