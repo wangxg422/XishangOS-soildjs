@@ -7,9 +7,18 @@ const routes: RouteDefinition[] = [
         component: lazy(() => import("../views/login"))
     },
     {
-        path: "/desktop",
-        component: lazy(() => import("../views/desktop"))
-    }
+        path: "/",
+        children: [
+            {
+                path: "/",
+                component: lazy(() => import("../views/desktop"))
+            },
+            {
+                path: "/desktop",
+                component: lazy(() => import("../views/desktop"))
+            }
+        ]
+    },
 ];
 
 export default routes;
