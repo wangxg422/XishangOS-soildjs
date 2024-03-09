@@ -35,6 +35,10 @@ export default function Desktop() {
     isShowAppDashboard = !isShowAppDashboard;
   };
 
+  const toDesktop = () => {
+    isShowAppDashboard = false;
+  }
+
   return (
     <>
       {/* bg-[url(${bgImage})] */}
@@ -54,14 +58,15 @@ export default function Desktop() {
             <AppBoard />
           </div>
           <div class="header-right text-white text-xl">XishangOS</div>
-          <div class="app-dashboard w-14 h-14 text-white" onclick={showAppDashboard}>
-            <img src={appDashboardImg} alt="appDashboard" />
+          <div class="app-dashboard-btn text-white bg-[#171b24] px-6 py-2 rounded-lg flex justify-center" onclick={showAppDashboard}>
+            <div class="w-6 h-6"><img src={appDashboardImg} alt="appDashboard" /></div>
+            <div class="ml-2">全部应用</div>
           </div>
         </div>
       </Show>
-      {/* <Show when={isShowAppDashboard}>
-        <div>xx</div>
-      </Show> */}
+      <Show when={isShowAppDashboard}>
+        <div class="app-dashboard h-screen w-screen" onclick={toDesktop}>xx</div>
+      </Show>
     </>
   );
 }

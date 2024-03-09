@@ -1,29 +1,40 @@
 .desktop {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    .datetime {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translate(-50%, 0);
-        margin: 0 auto;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  .datetime {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 0 auto;
+  }
+  .app-board {
+    height: 90%;
+    width: 40%;
+  }
+  .app-dashboard-btn {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 10px;
+    &:hover {
+      cursor: pointer;
     }
-    .app-board {
-        height: 90%;
-        width: 40%;
-    }
-    .app-dashboard {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-    .header-right {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
+  }
+  .app-dashboard {
+    //opacity: 0.5; /* 设置透明度为50% */
+    // -webkit-backdrop-filter: blur(10px);
+    // backdrop-filter: blur(6px);
+    // transition: 0.5s ease;
+    background-image: url("@/assets/images/bg.jpg");
+    background-color: hsla(0, 100%, 50%, 0.5);
+    backdrop-filter: opacity(0.5);
+    z-index: -1;
+  }
+  .header-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
