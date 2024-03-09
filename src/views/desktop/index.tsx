@@ -5,6 +5,7 @@ import appDashboardImg from "@/assets/images/default_app_dashboard.svg";
 import "./index.scss";
 import { getWeekInChinese } from "@/utils/datetime";
 import AppBoard from "./components/appBoard";
+import { IoApps } from 'solid-icons/io'
 
 export default function Desktop() {
   let dateTime = $signal({
@@ -58,8 +59,8 @@ export default function Desktop() {
             <AppBoard />
           </div>
           <div class="header-right text-white text-xl">XishangOS</div>
-          <div class="app-dashboard-btn text-white bg-[#171b24] px-6 py-2 rounded-lg flex justify-center" onclick={showAppDashboard}>
-            <div class="w-6 h-6"><img src={appDashboardImg} alt="appDashboard" /></div>
+          <div class="app-dashboard-btn text-white bg-[#171b24] px-4 py-2 rounded-lg flex justify-center items-center" onclick={showAppDashboard}>
+            <IoApps size={20} />
             <div class="ml-2">全部应用</div>
           </div>
         </div>

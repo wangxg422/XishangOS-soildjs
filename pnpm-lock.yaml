@@ -26,6 +26,9 @@ dependencies:
   postcss:
     specifier: ^8.4.35
     version: 8.4.35
+  solid-icons:
+    specifier: ^1.1.0
+    version: 1.1.0(solid-js@1.8.11)
   solid-immer:
     specifier: ^0.1.1
     version: 0.1.1(immer@10.0.3)(solid-js@1.8.11)
@@ -1932,6 +1935,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /solid-icons@1.1.0(solid-js@1.8.11):
+    resolution: {integrity: sha512-IesTfr/F1ElVwH2E1110s2RPXH4pujKfSs+koT8rwuTAdleO5s26lNSpqJV7D1+QHooJj18mcOiz2PIKs0ic+A==, tarball: https://registry.npmmirror.com/solid-icons/-/solid-icons-1.1.0.tgz}
+    peerDependencies:
+      solid-js: '*'
+    dependencies:
+      solid-js: 1.8.11
+    dev: false
 
   /solid-immer@0.1.1(immer@10.0.3)(solid-js@1.8.11):
     resolution: {integrity: sha512-KrI+79P4Y0vSmzGZ/0fBzZZmR9Yp9wGrRolUvqCE+FLx0KVUjHGnFUZfZPaPvwBu0Zd2JCWJ6vy0uDJt0tRzUg==, tarball: https://registry.npmmirror.com/solid-immer/-/solid-immer-0.1.1.tgz}

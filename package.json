@@ -27,6 +27,7 @@
     "babel-plugin-solid-labels": "^0.15.1",
     "dayjs": "^1.11.10",
     "postcss": "^8.4.35",
+    "solid-icons": "^1.1.0",
     "solid-immer": "^0.1.1",
     "solid-js": "^1.8.11",
     "solid-labels": "^0.16.0",
