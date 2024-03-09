@@ -33,13 +33,13 @@ export default function Desktop() {
     };
   };
 
-  const showAppDashboard = () => {
-    isShowAppDashboard = !isShowAppDashboard;
-  };
+  const searchInputClick = (e: Event) => {
+    e.stopPropagation();
+  }
 
-  const toDesktop = () => {
-    isShowAppDashboard = false;
-  };
+  const searchIconClick = (e: Event) => {
+    e.stopPropagation();
+  }
 
   return (
     <>
@@ -62,7 +62,7 @@ export default function Desktop() {
           <div class="header-right text-white text-xl">XishangOS</div>
           <div
             class="app-dashboard-btn text-white bg-[#171b24] px-4 py-2 rounded-lg flex justify-center items-center"
-            onclick={showAppDashboard}
+            onclick={() => isShowAppDashboard = true}
           >
             <IoApps size={20} />
             <div class="ml-2">全部应用</div>
@@ -73,16 +73,17 @@ export default function Desktop() {
         <div
           class="app-dashboard h-screen w-screen bg-cover flex flex-col justify-center items-center"
           style={{ "background-image": `url(${bgImage})` }}
-          onclick={toDesktop}
+          onclick={() => isShowAppDashboard = false}
         >
-          <div class="w-full h-1/6 flex flex-col justify-center items-center">
+          <div class="w-full h-1/6 hover:cursor-pointer flex flex-col justify-center items-center">
             <div class="w-full max-w-xs text-white flex justify-center items-center">
               <input
                 type="text"
                 placeholder="搜索"
                 class="search-input border-none w-5/6"
+                onclick={searchInputClick}
               />
-              <AiOutlineSearch size={32} />
+              <AiOutlineSearch size={32} onclick={searchIconClick}/>
             </div>
           </div>
           <div class="h-5/6 w-full">

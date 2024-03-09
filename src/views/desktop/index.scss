@@ -50,9 +50,9 @@
 
   .search-input {
     background-color: rgba(0, 0, 0, 0);
+    border-bottom: 1px solid gray;
     &:focus {
       outline: 0;
-      border-bottom: 1px solid gray;
     }
   }
 }
