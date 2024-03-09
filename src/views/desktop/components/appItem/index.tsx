@@ -12,7 +12,7 @@ export default function App(props: any) {
   const icon = props.appInfo.appIcon ? props.appInfo.appIcon : defaultAppImg;
   return (
     <>
-      <div class="app-item p-3 flex flex-col items-center" onclick={clickApp}>
+      <div class="app-item hvr-pulse-shrink p-3 flex flex-col items-center" onclick={clickApp}>
         <div class={`${appBg} w-16 h-16 rounded-md flex items-center justify-center`}>
           <div class="w-12 h-12">
             <img src={icon} alt="app" />
