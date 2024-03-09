@@ -7,6 +7,7 @@ import AppBoard from "./components/appBoard";
 import { IoApps } from "solid-icons/io";
 import { AiOutlineSearch } from "solid-icons/ai";
 import AppDashboard from "./components/appDashboard";
+import Header from "./components/header";
 
 export default function Desktop() {
   let dateTime = $signal({
@@ -76,7 +77,7 @@ export default function Desktop() {
           <div class="app-board">
             <AppBoard />
           </div>
-          <div class="header-right text-white text-xl">XishangOS</div>
+          <div class="header-right"><Header /></div>
           <div
             class="app-dashboard-btn text-white bg-[#171b24] px-4 py-2 rounded-lg flex justify-center items-center"
             onclick={() => (isShowAppDashboard = true)}
