@@ -15,6 +15,7 @@ export default function Desktop() {
     week: 0,
   });
   let isShowAppDashboard = $signal(false);
+  let searchContent = $signal("");
 
   let timerId: NodeJS.Timeout;
 
@@ -35,11 +36,27 @@ export default function Desktop() {
 
   const searchInputClick = (e: Event) => {
     e.stopPropagation();
+  };
+
+  const searchInput = (e: Event) => {
+    /**
+     * event.target 这是一个 HTMLElement 它是所有 HTML 元素的父元素，
+       但不保证具有属性 value 。 
+       TypeScript 检测到这一点并抛出错误。将 event.target 转换为适当的 HTML 元素，
+      以确保它是 HTMLInputElement 它确实具有 value 属性：
+     */
+    const content = (e.target as HTMLInputElement).value;
+    filterApp(content);
+  };
+
+  const filterApp = (content: string) => {
+    // TODO 根据查找条件检索应用
   }
 
   const searchIconClick = (e: Event) => {
+    filterApp(searchContent);
     e.stopPropagation();
-  }
+  };
 
   return (
     <>
@@ -62,7 +79,7 @@ export default function Desktop() {
           <div class="header-right text-white text-xl">XishangOS</div>
           <div
             class="app-dashboard-btn text-white bg-[#171b24] px-4 py-2 rounded-lg flex justify-center items-center"
-            onclick={() => isShowAppDashboard = true}
+            onclick={() => (isShowAppDashboard = true)}
           >
             <IoApps size={20} />
             <div class="ml-2">全部应用</div>
@@ -73,7 +90,7 @@ export default function Desktop() {
         <div
           class="app-dashboard h-screen w-screen bg-cover flex flex-col justify-center items-center"
           style={{ "background-image": `url(${bgImage})` }}
-          onclick={() => isShowAppDashboard = false}
+          onclick={() => (isShowAppDashboard = false)}
         >
           <div class="w-full h-1/6 hover:cursor-pointer flex flex-col justify-center items-center">
             <div class="w-full max-w-xs text-white flex justify-center items-center">
@@ -82,8 +99,9 @@ export default function Desktop() {
                 placeholder="搜索"
                 class="search-input border-none w-5/6"
                 onclick={searchInputClick}
+                oninput={searchInput}
               />
-              <AiOutlineSearch size={32} onclick={searchIconClick}/>
+              <AiOutlineSearch size={32} onclick={searchIconClick} />
             </div>
           </div>
           <div class="h-5/6 w-full">
