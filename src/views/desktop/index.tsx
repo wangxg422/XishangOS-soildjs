@@ -8,6 +8,7 @@ import { IoApps } from "solid-icons/io";
 import { AiOutlineSearch } from "solid-icons/ai";
 import AppDashboard from "./components/appDashboard";
 import Header from "./components/header";
+import { getInputValue } from "@/utils/element";
 
 export default function Desktop() {
   let dateTime = $signal({
@@ -40,14 +41,7 @@ export default function Desktop() {
   };
 
   const searchInput = (e: Event) => {
-    /**
-     * event.target 这是一个 HTMLElement 它是所有 HTML 元素的父元素，
-       但不保证具有属性 value 。 
-       TypeScript 检测到这一点并抛出错误。将 event.target 转换为适当的 HTML 元素，
-      以确保它是 HTMLInputElement 它确实具有 value 属性：
-     */
-    const content = (e.target as HTMLInputElement).value;
-    filterApp(content);
+    filterApp(getInputValue(e));
   };
 
   const filterApp = (content: string) => {
