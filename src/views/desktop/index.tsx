@@ -7,7 +7,6 @@ import AppBoard from "./components/appBoard";
 import { IoApps } from "solid-icons/io";
 import { AiOutlineSearch } from "solid-icons/ai";
 import AppDashboard from "./components/appDashboard";
-import { HiOutlineXMark } from 'solid-icons/hi'
 
 export default function Desktop() {
   let dateTime = $signal({
@@ -77,11 +76,11 @@ export default function Desktop() {
           onclick={toDesktop}
         >
           <div class="w-full h-1/6 flex flex-col justify-center items-center">
-            <div class="w-full max-w-xs border-b-2 border-b-gray-950 flex justify-center items-center">
+            <div class="w-full max-w-xs text-white flex justify-center items-center">
               <input
                 type="text"
                 placeholder="搜索"
-                class="search-input border-none"
+                class="search-input border-none w-5/6"
               />
               <AiOutlineSearch size={32} />
             </div>
@@ -89,6 +88,7 @@ export default function Desktop() {
           <div class="h-5/6 w-full">
             <AppDashboard />
           </div>
+          <div class="inner"></div>
         </div>
       </Show>
     </>
