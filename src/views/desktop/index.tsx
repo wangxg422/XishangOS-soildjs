@@ -18,14 +18,14 @@ export default function Desktop() {
 
   onMount(() => {
     getCurrentDateTime();
-    timerId = setInterval(getCurrentDateTime, 1000);
+    timerId = setInterval(getCurrentDateTime, 60000);
   });
   onCleanup(() => clearInterval(timerId));
 
   const getCurrentDateTime = () => {
     const now = dayjs();
     dateTime = {
-      time: now.format("HH:mm:ss"),
+      time: now.format("HH:mm"),
       date: now.format("YYYY 年 MM 月 DD 日"),
       week: now.day(),
     };
@@ -43,7 +43,7 @@ export default function Desktop() {
           class={`desktop h-screen w-screen bg-cover`}
           style={{ "background-image": `url(${bgImage})` }}
         >
-          <div class="datetime text-white">
+          <div class="datetime text-white flex flex-col items-center">
             <div class="text-6xl font-medium">{dateTime.time}</div>
             <div class="text-xl font-bold mt-2">
               <span>{dateTime.date}</span>
