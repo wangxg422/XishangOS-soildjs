@@ -11,8 +11,7 @@
     }
     .app-board {
         height: 90%;
-        width: 10%;
-        overflow: inherit;
+        width: 40%;
     }
     .app-dashboard {
         position: absolute;
@@ -21,5 +20,10 @@
         &:hover {
             cursor: pointer;
         }
+    }
+    .header-right {
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }

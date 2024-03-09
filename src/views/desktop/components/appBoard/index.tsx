@@ -12,13 +12,15 @@ export default function AppBoard() {
 
   return (
     <>
-      <For each={appList}>
-        {app => (
-          <div>
-            <AppItem appInfo={app} />
-          </div>
-        )}
-      </For>
+      <div class="grid grid-rows-5 grid-flow-col justify-start">
+        <For each={appList}>
+          {(app) => (
+            <div>
+              <AppItem appInfo={app} />
+            </div>
+          )}
+        </For>
+      </div>
     </>
   );
 }

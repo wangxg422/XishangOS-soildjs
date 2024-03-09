@@ -53,14 +53,15 @@ export default function Desktop() {
           <div class="app-board">
             <AppBoard />
           </div>
+          <div class="header-right text-white text-xl">XishangOS</div>
           <div class="app-dashboard w-14 h-14 text-white" onclick={showAppDashboard}>
             <img src={appDashboardImg} alt="appDashboard" />
           </div>
         </div>
       </Show>
-      <Show when={isShowAppDashboard}>
+      {/* <Show when={isShowAppDashboard}>
         <div>xx</div>
-      </Show>
+      </Show> */}
     </>
   );
 }

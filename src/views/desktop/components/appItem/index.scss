@@ -1,10 +1,16 @@
 .app-item {
+  &:hover {
+    cursor: pointer;
+  }
+  .app-name {
     &:hover {
-        cursor: pointer;
+      color: #4791ee;
     }
-    .app-name {
-        &:hover {
-            color: #4791ee;
-        }
-    }
+  }
+  .app-bg {
+    // background-color: rgb(255 255 255 / 80%);
+    background: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
