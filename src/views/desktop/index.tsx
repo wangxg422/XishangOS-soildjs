@@ -66,7 +66,7 @@ export default function Desktop() {
         </div>
       </Show>
       <Show when={isShowAppDashboard}>
-        <div class="app-dashboard h-screen w-screen" onclick={toDesktop}>xx</div>
+        <div class="app-dashboard h-screen w-screen opacity-50" style={{ "background-image": `url(${bgImage})` }} onclick={toDesktop}>xx</div>
       </Show>
     </>
   );
