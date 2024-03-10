@@ -22,11 +22,13 @@
   "dependencies": {
     "@solidjs/router": "^0.12.4",
     "@tanstack/solid-query": "^5.24.1",
+    "@types/qs": "^6.9.12",
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "babel-plugin-solid-labels": "^0.15.1",
     "dayjs": "^1.11.10",
     "postcss": "^8.4.35",
+    "qs": "^6.12.0",
     "solid-icons": "^1.1.0",
     "solid-immer": "^0.1.1",
     "solid-js": "^1.8.11",

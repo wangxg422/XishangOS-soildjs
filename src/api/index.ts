@@ -3,6 +3,7 @@ import { ResultData } from "../interface/login/index";
 import { ResultEnum } from "../utils/enums/httpEnum";
 import { checkStatus } from "./helper/checkStatus";
 import { AxiosCanceler } from "./helper/axiosCancel";
+import { useUserInfoStore } from "@/store/sysUser";
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   loading?: boolean;
@@ -29,11 +30,11 @@ class RequestHttp {
     /**
      * @description 请求拦截器
      * 客户端发送请求 -> [请求拦截器] -> 服务器
-     * token校验(JWT) : 接受服务器返回的 token,存储到 vuex/pinia/本地储存当中
+     * token校验(JWT) : 接受服务器返回的 token
      */
     this.service.interceptors.request.use(
       (config: CustomAxiosRequestConfig) => {
-        // TODO 取用户信息
+        const userStore = useUserInfoStore();
         // 重复请求不需要取消，在 api 服务中通过指定的第三个参数: { cancel: false } 来控制
         config.cancel ?? (config.cancel = true);
         config.cancel && axiosCanceler.addPending(config);
@@ -41,7 +42,7 @@ class RequestHttp {
         config.loading ?? (config.loading = true);
         //config.loading && showFullScreenLoading();
         if (config.headers && typeof config.headers.set === "function") {
-          config.headers.set("x-access-token", "");
+          config.headers.set("x-access-token", userStore.token);
         }
         return config;
       },
@@ -68,8 +69,8 @@ class RequestHttp {
         if (data.code && data.code !== ResultEnum.SUCCESS) {
           return Promise.reject(data);
         }
-        // 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
-        return data;
+        // 成功请求
+        return data.data;
       },
       async (error: AxiosError) => {
         const { response } = error;

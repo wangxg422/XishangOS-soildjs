@@ -6,6 +6,7 @@ import { AiFillLock } from "solid-icons/ai";
 import { getInputValue } from "@/utils/element";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "solid-icons/ai";
 import "./index.scss";
+import { loginApi } from "@/api/modules/login";
 
 const App: Component = () => {
   const userForm = $signal({
@@ -15,7 +16,10 @@ const App: Component = () => {
   });
   let showPassword = $signal(false);
 
-  const login = () => {};
+  const login = async() => {
+    const res = await loginApi({ username: userForm.username, password: userForm.password });
+    console.log(res)
+  };
   const reg = () => {};
   const forgetPassword = () => {};
 
@@ -60,7 +64,7 @@ const App: Component = () => {
               class="hover:cursor-pointer"
               onmousedown={() => (showPassword = true)}
               onmouseup={() => (showPassword = false)}
-              onmouseleave={() => showPassword = false}
+              onmouseleave={() => (showPassword = false)}
             >
               {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
             </div>
