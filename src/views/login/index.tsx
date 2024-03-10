@@ -4,29 +4,31 @@ import logo from "@/assets/images/default_app.png";
 import { ImUser } from "solid-icons/im";
 import { AiFillLock } from "solid-icons/ai";
 import { getInputValue } from "@/utils/element";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "solid-icons/ai";
+import "./index.scss";
 
 const App: Component = () => {
   const userForm = $signal({
     username: "",
-    password: ""
-  })
+    password: "",
+    rememberMe: "0",
+  });
+  let showPassword = $signal(false);
 
-  const login = () => {
-
-  }
-  const reg = () => {
-
-  }
-  const forgetPassword = () => {
-
-  }
+  const login = () => {};
+  const reg = () => {};
+  const forgetPassword = () => {};
 
   const usernameInput = (e: Event) => {
     userForm.username = getInputValue(e);
-  }
+  };
   const passwordInput = (e: Event) => {
     userForm.password = getInputValue(e);
-  }
+  };
+  const clickRemember = (e: Event) => {
+    const v = getInputValue(e);
+    userForm.rememberMe = v === "1" ? "0" : "1";
+  };
 
   return (
     <>
@@ -37,21 +39,63 @@ const App: Component = () => {
         <div class="login-form w-full max-w-sm flex flex-col justify-center items-center bg-white px-6 py-6 rounded-lg">
           <div class="mb-6 flex justify-center items-center">
             <img src={logo} alt="XishangOS" class="w-14 h-14" />
-            <div class="text-black text-lg ml-2">XishangOS</div>
+            <div class="text-white text-xl font-bold ml-2">XishangOS</div>
           </div>
           <label class="input input-bordered flex items-center gap-2 w-full">
             <ImUser />
-            <input type="text" class="grow" placeholder="用户名" oninput={usernameInput} />
+            <input
+              type="text"
+              class="grow"
+              placeholder="用户名"
+              oninput={usernameInput}
+            />
           </label>
           <label class="input input-bordered flex items-center gap-2 w-full mb-2 mt-2">
             <AiFillLock />
-            <input type="password" class="grow" oninput={passwordInput} />
+            <input
+              type={showPassword ? "text" : "password"}
+              class="grow"
+              oninput={passwordInput}
+            />
+            <div
+              class="hover:cursor-pointer"
+              onmousedown={() => (showPassword = true)}
+              onmouseup={() => (showPassword = false)}
+              onmouseleave={() => showPassword = false}
+            >
+              {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+            </div>
           </label>
-          <div>
-            <button class="btn btn-info" onclick={login}>登录</button>
-            <button class="btn" onclick={reg}>注册</button>
+          <div class="w-full">
+            <button class="btn btn-info w-full" onclick={login}>
+              登录
+            </button>
           </div>
-          <div><div onclick={forgetPassword}>忘记密码?</div></div>
+          <div class="w-full mt-2 flex items-center justify-between">
+            <div class="flex items-center justify-center">
+              <input
+                type="checkbox"
+                checked={false}
+                value={userForm.rememberMe}
+                class="checkbox checkbox-sm checkbox-primary"
+                oninput={clickRemember}
+              />
+              <span class="ml-2 text-md">记住我</span>
+            </div>
+            <div
+              class="text-md hover:text-sky-700 hover:font-bold"
+              onclick={forgetPassword}
+            >
+              忘记密码?
+            </div>
+          </div>
+          <div class="w-full flex items-center justify-center">
+            <div class="reg-left h-0.5 w-1/4"></div>
+            <span class="hover:text-sky-700 hover:font-bold mx-2" onclick={reg}>
+              没有账户? 立即注册
+            </span>
+            <div class="reg-right h-0.5 w-1/4"></div>
+          </div>
         </div>
       </div>
     </>

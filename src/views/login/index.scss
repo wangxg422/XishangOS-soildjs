@@ -1,5 +1,51 @@
 .login {
-    margin: 0;
-    padding: 0;
-    background-image: url("@/assets/images/bg.JPG");
+  margin: 0;
+  padding: 0;
+  .login-form {
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
+    transition: 0.5s ease;
+
+    .input {
+      outline: 0;
+      background: rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(6px);
+      transition: 0.5s ease;
+    }
+
+    .reg-left {
+      background: linear-gradient(
+        to left,
+        #1c2534,
+        #2d394b,
+        #3e4b5e,
+        #596980,
+        #8999af,
+        #c4cfdd,
+        #dee5ee,
+        #eff3f8,
+        #f7f9fc,
+        #fff
+      );
+      border-radius: 2px;
+    }
+    .reg-right {
+      background: linear-gradient(
+        to right,
+        #1c2534,
+        #2d394b,
+        #3e4b5e,
+        #596980,
+        #8999af,
+        #c4cfdd,
+        #dee5ee,
+        #eff3f8,
+        #f7f9fc,
+        #fff
+      );
+      border-radius: 2px;
+    }
+  }
 }
