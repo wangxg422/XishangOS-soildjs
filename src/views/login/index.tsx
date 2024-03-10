@@ -11,7 +11,7 @@ const App: Component = () => {
   const userForm = $signal({
     username: "",
     password: "",
-    rememberMe: "0",
+    rememberMe: "0", // 0不记住 1记住
   });
   let showPassword = $signal(false);
 
@@ -25,15 +25,14 @@ const App: Component = () => {
   const passwordInput = (e: Event) => {
     userForm.password = getInputValue(e);
   };
-  const clickRemember = (e: Event) => {
-    const v = getInputValue(e);
-    userForm.rememberMe = v === "1" ? "0" : "1";
+  const clickRemember = () => {
+    userForm.rememberMe = userForm.rememberMe === "1" ? "0" : "1";
   };
 
   return (
     <>
       <div
-        class="login w-screen h-screen hover:cursor-pointer flex justify-center items-center"
+        class="login w-screen h-screen bg-cover hover:cursor-pointer flex justify-center items-center"
         style={{ "background-image": `url(${bgImage})` }}
       >
         <div class="login-form w-full max-w-sm flex flex-col justify-center items-center bg-white px-6 py-6 rounded-lg">
