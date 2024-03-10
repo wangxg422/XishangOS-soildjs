@@ -3,7 +3,7 @@ import http from "../../index";
 
 // 用户登录
 export const loginApi = (params: Login.ReqLoginForm) => {
-  return http.post<Login.ResLogin>(`/login`, params, { loading: false });
+  return http.post<Login.ResLogin>(`/api/api/system/v1/login`, params, { loading: false });
 };
 
 // 获取菜单列表
