@@ -1,13 +1,17 @@
 import { onMount, For } from "solid-js";
-import { getDesktopApp } from "@/api/modules/app";
+import { desktopAppApi } from "@/api/modules/app";
 import { App } from "@/interface/app";
-import AppItem from "../appItem";
+import AppItem from "../appInstance";
 
 export default function AppBoard() {
-  let appList: App[] = $signal([]);
+  let appList: App.Instance[] = $signal([]);
 
+  const getAppInstanceList = async () => {
+    const res = await desktopAppApi();
+    appList = res;
+  }
   onMount(() => {
-    appList = getDesktopApp();
+    getAppInstanceList();
   });
 
   return (
@@ -16,7 +20,7 @@ export default function AppBoard() {
         <For each={appList}>
           {(app) => (
             <div>
-              <AppItem appInfo={app} />
+              <AppItem appInstanceInfo={app} />
             </div>
           )}
         </For>

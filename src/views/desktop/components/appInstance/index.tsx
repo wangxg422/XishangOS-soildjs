@@ -1,7 +1,8 @@
 import defaultAppImg from "@/assets/images/default_app.png";
 import "./index.scss";
+import { App } from "@/interface/app";
 
-export default function App(props: any) {
+export default function AppInstance(props: any) {
   let appBg = $signal("app-bg");
 
   const clickApp = (e: Event) => {
@@ -9,7 +10,9 @@ export default function App(props: any) {
     e.stopPropagation()
   };
 
-  const icon = props.appInfo.appIcon ? props.appInfo.appIcon : defaultAppImg;
+  const appInstance: App.Instance = props.appInstanceInfo;
+  
+  const icon = appInstance.instanceIcon ? appInstance.instanceIcon : defaultAppImg;
   return (
     <>
       <div class="app-item hvr-pulse-shrink p-3 flex flex-col items-center" onclick={clickApp}>
@@ -19,7 +22,7 @@ export default function App(props: any) {
           </div>
         </div>
         <div class="app-name text-white text-md pt-1">
-          {props.appInfo.appName}
+          {appInstance.instanceName}
         </div>
       </div>
     </>
