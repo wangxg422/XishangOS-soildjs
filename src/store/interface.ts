@@ -1,14 +1,8 @@
-export interface SysUser {
-    userId: string;
-    userName: string;
-    menus: string[];
-    roleList: string[];
-    permissionList: string[];
-}
+import { Login } from "@/interface/login"
 
 export interface UserInfo {
     token?: string
-    userInfo?: SysUser
+    userInfo?: Login.UserInfo
     setToken: (token: string) => void
-    setUserInfo: (userInfo: SysUser) => void
+    setUserInfo: (userInfo: Login.UserInfo) => void
   }

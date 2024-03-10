@@ -7,6 +7,8 @@ import { getInputValue } from "@/utils/element";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "solid-icons/ai";
 import "./index.scss";
 import { loginApi } from "@/api/modules/login";
+import { useUserInfoStore } from "@/store/sysUser";
+import { Login } from "@/interface/login";
 
 const App: Component = () => {
   const userForm = $signal({
@@ -16,9 +18,13 @@ const App: Component = () => {
   });
   let showPassword = $signal(false);
 
+  const userStore = useUserInfoStore();
+
   const login = async() => {
-    const res = await loginApi({ username: userForm.username, password: userForm.password });
-    console.log(res)
+    const res: Login.ResLogin = await loginApi({ username: userForm.username, password: userForm.password });
+    userStore.setToken(res.token);
+    userStore.setUserInfo(res.userInfo);
+    window.location.href = "/desktop"
   };
   const reg = () => {};
   const forgetPassword = () => {};
