@@ -20,7 +20,7 @@ export default function AppDashboard() {
         <For each={appList}>
           {(app) => (
             <div>
-              <AppItem appInfo={app} />
+              <AppItem appInstanceInfo={app} />
             </div>
           )}
         </For>
