@@ -68,7 +68,7 @@ export default function Desktop() {
               <span class="ml-2">{getWeekInChinese(dateTime.week)}</span>
             </div>
           </div>
-          <div class="app-board">
+          <div class="app-board py-4 px-2">
             <AppBoard />
           </div>
           <div class="header-right"><Header /></div>

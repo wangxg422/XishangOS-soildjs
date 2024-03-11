@@ -14,9 +14,18 @@ export default function AppBoard() {
     getAppInstanceList();
   });
 
+  const gridStyle = {
+    "display": "grid",
+    "grid-auto-flow": "column",
+    "grid-template-rows": `repeat(auto-fill, 92px)`,
+    "gap": "20px",
+    "justify-content": "flex-start",
+    "align-items": "flex-center",
+    "justify-items": "center"
+  }
   return (
     <>
-      <div class="grid grid-rows-8 grid-flow-col justify-start items-start">
+      <div class="app-board" style={gridStyle}>
         <For each={appList}>
           {(app) => (
             <div>
