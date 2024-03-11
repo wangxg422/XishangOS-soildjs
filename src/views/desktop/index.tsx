@@ -96,7 +96,7 @@ export default function Desktop() {
                 onclick={searchInputClick}
                 oninput={searchInput}
               />
-              <AiOutlineSearch size={32} onclick={searchIconClick} />
+              <AiOutlineSearch size={32} color="gray" onclick={searchIconClick} />
             </div>
           </div>
           <div class="h-5/6 w-full">

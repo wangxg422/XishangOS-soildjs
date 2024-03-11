@@ -16,7 +16,7 @@ export default function AppDashboard() {
 
   return (
     <>
-      <div class="grid grid-cols-8 items-start">
+      <div class="grid grid-cols-8 gap-y-6 items-start">
         <For each={appList}>
           {(app) => (
             <div>
