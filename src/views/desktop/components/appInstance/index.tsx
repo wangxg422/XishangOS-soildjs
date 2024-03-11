@@ -21,7 +21,7 @@ export default function AppInstance(props: any) {
             <img src={icon} alt="app" />
           </div>
         </div>
-        <div class="app-name text-white text-md pt-1">
+        <div class="app-name text-white text-md mt-1">
           {appInstance.instanceName}
         </div>
       </div>

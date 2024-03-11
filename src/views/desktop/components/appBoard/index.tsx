@@ -16,7 +16,7 @@ export default function AppBoard() {
 
   return (
     <>
-      <div class="grid grid-rows-5 grid-flow-col justify-start">
+      <div class="grid grid-rows-5 grid-flow-col justify-start items-start">
         <For each={appList}>
           {(app) => (
             <div>

@@ -1,7 +1,7 @@
 import { allAppApi } from "@/api/modules/app";
 import { App } from "@/interface/app";
 import { onMount } from "solid-js";
-import AppItem from "../appInstance";
+import AppInstance from "../appInstance";
 
 export default function AppDashboard() {
   let appList: App.Instance[] = $signal([]);
@@ -20,7 +20,7 @@ export default function AppDashboard() {
         <For each={appList}>
           {(app) => (
             <div>
-              <AppItem appInstanceInfo={app} />
+              <AppInstance appInstanceInfo={app} />
             </div>
           )}
         </For>
