@@ -7,11 +7,14 @@ import "./index.css";
 
 const App: Component = () => {
   return (
+    // <>
+    //   <Router>{staticRoute}</Router>
+    //   <Show when={routerGuard()} fallback={<Navigate href="/login" />}>
+    //     <Router>{routes}</Router>
+    //   </Show>
+    // </>
     <>
-      <Router>{staticRoute}</Router>
-      <Show when={routerGuard()} fallback={<Navigate href="/login" />}>
-        <Router>{routes}</Router>
-      </Show>
+      <Router>{[...staticRoute, ...routes]}</Router>
     </>
   );
 };

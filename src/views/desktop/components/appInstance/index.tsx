@@ -4,9 +4,10 @@ import { App } from "@/interface/app";
 
 export default function AppInstance(props: any) {
   let appBg = $signal("app-bg");
+  let isShrink = $signal(false);
 
   const clickApp = (e: Event) => {
-    //window.location.href = props.appInfo.appAddress;
+    window.open(appInstance.instanceAddress,'_blank')
     e.stopPropagation()
   };
 
@@ -21,9 +22,19 @@ export default function AppInstance(props: any) {
       "transition": `0.5s ease`
   }
 
+  const mouseOver = () => {
+    setTimeout(() => {
+      isShrink = true;
+    }, 1500);
+  }
+
+  const mouseLeave = () => {
+    isShrink = false;
+  }
+
   return (
     <>
-      <div class="cursor-pointer hvr-pulse-shrink flex flex-col items-center" onclick={clickApp}>
+      <div class={`cursor-pointer flex flex-col items-center ${ isShrink ? "hvr-pulse-shrink" : ""}`} onclick={clickApp} onmouseover={mouseOver} onmouseleave={mouseLeave}>
         <div class={`w-16 h-16 rounded-md flex items-center justify-center`} style={iconBg}>
           <div class="w-12 h-12">
             <img src={icon} alt="app" />
