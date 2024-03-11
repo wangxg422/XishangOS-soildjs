@@ -1,7 +1,7 @@
 import { onMount, For } from "solid-js";
 import { desktopAppApi } from "@/api/modules/app";
 import { App } from "@/interface/app";
-import AppItem from "../appInstance";
+import AppInstance from "../appInstance";
 
 export default function AppBoard() {
   let appList: App.Instance[] = $signal([]);
@@ -16,11 +16,11 @@ export default function AppBoard() {
 
   return (
     <>
-      <div class="grid grid-rows-5 grid-flow-col justify-start items-start">
+      <div class="grid grid-rows-8 grid-flow-col justify-start items-start">
         <For each={appList}>
           {(app) => (
             <div>
-              <AppItem appInstanceInfo={app} />
+              <AppInstance appInstanceInfo={app} />
             </div>
           )}
         </For>
