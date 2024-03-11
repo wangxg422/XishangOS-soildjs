@@ -20,7 +20,7 @@ export default function AppBoard() {
     "grid-template-rows": `repeat(auto-fill, 92px)`,
     "gap": "20px",
     "justify-content": "flex-start",
-    "align-items": "flex-center",
+    "align-items": "center",
     "justify-items": "center"
   }
   return (

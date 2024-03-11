@@ -14,9 +14,18 @@ export default function AppDashboard() {
     getAllAppInstance();
   });
 
+  const gridStyle = {
+    "display": "grid",
+    "grid-template-columns": `repeat(auto-fill, 120px)`,
+    "gap": "24px",
+    "justify-content": "space-between",
+    "align-items": "center",
+    "justify-items": "center"
+  }
+
   return (
     <>
-      <div class="grid grid-cols-8 gap-y-6 items-start">
+      <div class="app-dashboard" style={gridStyle}>
         <For each={appList}>
           {(app) => (
             <div>
