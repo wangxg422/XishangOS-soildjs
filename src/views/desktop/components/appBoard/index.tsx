@@ -21,11 +21,12 @@ export default function AppBoard() {
     "gap": "20px",
     "justify-content": "flex-start",
     "align-items": "center",
-    "justify-items": "center"
+    "justify-items": "center",
+    "align-content": "space-between"
   }
   return (
     <>
-      <div class="app-board" style={gridStyle}>
+      <div class="h-full w-full" style={gridStyle}>
         <For each={appList}>
           {(app) => (
             <div>

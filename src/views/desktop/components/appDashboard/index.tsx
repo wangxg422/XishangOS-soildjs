@@ -25,7 +25,7 @@ export default function AppDashboard() {
 
   return (
     <>
-      <div class="app-dashboard" style={gridStyle}>
+      <div style={gridStyle}>
         <For each={appList}>
           {(app) => (
             <div>
