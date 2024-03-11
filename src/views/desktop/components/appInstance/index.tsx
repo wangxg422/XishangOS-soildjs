@@ -15,13 +15,13 @@ export default function AppInstance(props: any) {
   const icon = appInstance.instanceIcon ? appInstance.instanceIcon : defaultAppImg;
   return (
     <>
-      <div class="app-item hvr-pulse-shrink flex flex-col items-center" onclick={clickApp}>
+      <div class="app-item cursor-pointer hvr-pulse-shrink flex flex-col items-center" onclick={clickApp}>
         <div class={`${appBg} w-16 h-16 rounded-md flex items-center justify-center`}>
           <div class="w-12 h-12">
             <img src={icon} alt="app" />
           </div>
         </div>
-        <div class="app-name text-white text-base mt-1">
+        <div class="app-name text-white text-base mt-1 hover:font-bold">
           {appInstance.instanceName}
         </div>
       </div>
