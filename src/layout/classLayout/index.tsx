@@ -3,6 +3,7 @@ import "./index.scss";
 import HeaderLeft from "../components/headerLeft";
 import Footer from "../components/footer";
 import HeaderRight from "../components/headerRight";
+import Sidebar from "../components/sidebar";
 
 export interface ClassicLayoutProps extends ParentProps {}
 
@@ -17,7 +18,7 @@ const ClassLayout: Component<ClassicLayoutProps> = (props) => {
           <div class="">中间</div>
           <div><HeaderRight /></div>
         </div>
-        <div class="sidebar"></div>
+        <div class="sidebar"><Sidebar /></div>
         <div class="main">{props.children}</div>
         <div class="footer"><Footer /></div>
       </div>

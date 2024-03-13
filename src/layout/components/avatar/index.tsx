@@ -9,7 +9,7 @@ const Avatar: Component = () => {
     <>
       <div class="h-full w-full cursor-pointer flex justify-end items-center">
         <div class="text-md">
-          {userInfoStore.userInfo?.username || "XishangOS"}
+          {userInfoStore.userInfo?.userName || "XishangOS"}
         </div>
         <div class="avatar mx-2">
           <div class="w-8 rounded-full">
