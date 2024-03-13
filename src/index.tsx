@@ -12,4 +12,9 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
+// 禁用鼠标右键的默认事件
+document.addEventListener("contextmenu",function(e){
+	e.preventDefault()
+})
+
 render(() => <App />, root!);

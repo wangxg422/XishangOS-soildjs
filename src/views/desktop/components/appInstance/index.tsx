@@ -1,21 +1,23 @@
 import defaultAppImg from "@/assets/images/default_app.png";
-import "./index.scss";
 import { App } from "@/interface/app";
+import "./index.scss";
 
 export default function AppInstance(props: any) {
   let isShrink = $signal(false);
-  let isClick = $signal(false);
-  let isLongMouseDown = $signal(false);
+  let isRightClick = $signal(false);
 
-  const clickApp = (e: Event) => {
-    // 非长按即是点击操作
-    if (!isLongMouseDown) {
-      isClick = true;
+  const clickApp = (e: MouseEvent) => {
+    const b = e.button;
+    // 0左 1中 2右
+    if (b === 0) {
       isShrink = false;
-      isLongMouseDown = false;
       window.open(appInstance.instanceAddress, "_blank");
-      e.stopPropagation();
+    } else if (b === 2) {
+      isRightClick = true;
+      isShrink = true;
+    } else {
     }
+    e.stopPropagation();
   };
 
   const appInstance: App.Instance = props.appInstanceInfo;
@@ -39,28 +41,19 @@ export default function AppInstance(props: any) {
 
   const mouseLeave = () => {
     isShrink = false;
-    isLongMouseDown = false;
-  };
-
-  const mouseDown = () => {
-    setTimeout(() => {
-      if (!isClick) {
-        isLongMouseDown = true;
-      }
-    }, 1000);
+    isRightClick = false;
   };
 
   return (
     <>
       <div
-        class="flex justify-center items-start"
-        onmouseover={mouseOver}
+        class="cursor-pointer flex justify-center items-start"
+        onmousemove={mouseOver}
         onmouseleave={mouseLeave}
-        onmousedown={mouseDown}
-        onclick={clickApp}
+        onmousedown={clickApp}
       >
         <div
-          class={`cursor-pointer flex flex-col items-center ${
+          class={`flex flex-col items-center ${
             isShrink ? "hvr-pulse-shrink" : ""
           }`}
         >
@@ -76,9 +69,9 @@ export default function AppInstance(props: any) {
             {appInstance.instanceName}
           </div>
         </div>
-        <Show when={isLongMouseDown}>
-          <div class="w-16 h-16 bg-[#171a21] rounded-md">opt</div>
-        </Show>
+        {/* <Show when={isRightClick}> */}
+        <div class="w-16 h-16 bg-[#171a21] rounded-md">opt</div>
+        {/* </Show> */}
       </div>
     </>
   );
