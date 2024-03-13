@@ -47,16 +47,14 @@ export default function AppInstance(props: any) {
   return (
     <>
       <div
-        class="cursor-pointer flex justify-center items-start"
-        onmousemove={mouseOver}
+        class={`cursor-pointer flex justify-center items-start ${
+          isShrink ? "hvr-pulse-shrink" : ""
+        }`}
+        onmouseover={mouseOver}
         onmouseleave={mouseLeave}
         onmousedown={clickApp}
       >
-        <div
-          class={`flex flex-col items-center ${
-            isShrink ? "hvr-pulse-shrink" : ""
-          }`}
-        >
+        <div class={`flex flex-col items-center`}>
           <div
             class={`w-16 h-16 rounded-md flex items-center justify-center`}
             style={iconBg}
@@ -65,13 +63,13 @@ export default function AppInstance(props: any) {
               <img src={icon} alt="app" />
             </div>
           </div>
-          <div class="app-name text-white text-base mt-1 hover:font-bold">
+          <div class="app-name text-white text-base mt-1">
             {appInstance.instanceName}
           </div>
         </div>
-        {/* <Show when={isRightClick}> */}
-        <div class="w-16 h-16 bg-[#171a21] rounded-md">opt</div>
-        {/* </Show> */}
+        <Show when={isRightClick}>
+          <div class="w-16 h-16 bg-[#171a21] rounded-md">opt</div>
+        </Show>
       </div>
     </>
   );
