@@ -1,6 +1,6 @@
 import { onMount, onCleanup } from "solid-js";
 import dayjs from "dayjs";
-import bgImage from "@/assets/images/bg.jpg";
+import defaultBgImage from "@/assets/images/bg.jpg";
 import "./index.scss";
 import { getWeekInChinese } from "@/utils/datetime";
 import AppBoard from "./components/appBoard";
@@ -18,6 +18,7 @@ export default function Desktop() {
   });
   let isShowAppDashboard = $signal(false);
   let searchContent = $signal("");
+  let bgImage = $signal(defaultBgImage);
 
   let timerId: NodeJS.Timeout;
 
