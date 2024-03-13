@@ -15,6 +15,7 @@ const routes: RouteDefinition[] = [
             },
             {
                 path: "/system",
+                component: lazy(() => import("@/views/system")),
                 children: [
                     {
                         path: "/",
