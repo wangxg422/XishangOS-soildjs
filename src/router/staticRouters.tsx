@@ -4,7 +4,7 @@ import { lazy } from "solid-js";
 const staticRoute: RouteDefinition[] = [
     {
         path: "/login",
-        component: lazy(() => import("../views/login"))
+        component: lazy(() => import("@/views/login"))
     },
 ]
 

@@ -7,11 +7,36 @@ const routes: RouteDefinition[] = [
         children: [
             {
                 path: "/",
-                component: lazy(() => import("../views/desktop"))
+                component: lazy(() => import("@/views/desktop"))
             },
             {
                 path: "/desktop",
-                component: lazy(() => import("../views/desktop"))
+                component: lazy(() => import("@/views/desktop"))
+            },
+            {
+                path: "/system",
+                children: [
+                    {
+                        path: "/",
+                        component: lazy(() => import("@/views/system/user"))
+                    },
+                    {
+                        path: "/user",
+                        component: lazy(() => import("@/views/system/user"))
+                    },
+                    {
+                        path: "/menu",
+                        component: lazy(() => import("@/views/system/menu"))
+                    },
+                    {
+                        path: "/role",
+                        component: lazy(() => import("@/views/system/role"))
+                    },
+                    {
+                        path: "/dept",
+                        component: lazy(() => import("@/views/system/dept"))
+                    }
+                ]
             }
         ]
     },
