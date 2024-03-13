@@ -16,8 +16,8 @@ const Sidebar: Component<SidebarProps> = (props) => {
         <div class="mb-2 flex justify-center items-center">
         <TiDeviceDesktop size={20} class="mr-2" /><A href="/desktop">返回桌面</A>
         </div>
-        <div class="w-full flex flex-col justify-start justify-items-center content-start items-start">
-          <For each={menuList}>{menu => <Menu menuInfo={menu} />}</For>
+        <div class="w-full flex flex-col justify-start justify-items-center content-start items-start cursor-pointer">
+          <For each={menuList}>{menu => <Menu menuInfo={menu} depth={1} />}</For>
         </div>
       </div>
     </>
