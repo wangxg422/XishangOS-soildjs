@@ -6,8 +6,10 @@
                    "sidebar main" 1fr
                    "sidebar footer" 30px / 200px 1fr;
     .header {
-        background-color: green;
+        background-color: #fff;
         grid-area: header;
+        display: grid;
+        grid-template-columns: 200px auto 200px;
     }
     .sidebar {
         background-color: gray;
@@ -18,7 +20,7 @@
         grid-area: main;
     }
     .footer {
-        background-color: aqua;
+        background-color: #f6f8fa;
         grid-area: footer;
     }
 }

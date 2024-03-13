@@ -7,8 +7,8 @@ import AppBoard from "./components/appBoard";
 import { IoApps } from "solid-icons/io";
 import { AiOutlineSearch } from "solid-icons/ai";
 import AppDashboard from "./components/appDashboard";
-import Header from "./components/header";
 import { getInputValue } from "@/utils/element";
+import Avatar from "@/layout/components/avatar";
 
 export default function Desktop() {
   let dateTime = $signal({
@@ -72,7 +72,7 @@ export default function Desktop() {
           <div class="h-full w-1/2 py-4 px-2">
             <AppBoard />
           </div>
-          <div class="header-right"><Header /></div>
+          <div class="header-right mt-2 mr-2 text-white"><Avatar /></div>
           <div
             class="app-dashboard-btn text-white bg-[#171b24] px-4 py-2 rounded-lg flex justify-center items-center"
             onclick={() => (isShowAppDashboard = true)}
