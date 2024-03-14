@@ -25,8 +25,16 @@ export namespace SysMenu {
     type: string;
     icon?: string;
   }
+  export interface ITabBarItem {
+    name: string;
+    path: string;
+    title: string;
+    icon?: string;
+  }
   export interface SysMenuStore {
     breadcrumb: IBreadcrumb[];
+    tabBar: ITabBarItem[];
     setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => void
+    setTabBar: (tabBar: SysMenu.ITabBarItem[]) => void
   }
 }

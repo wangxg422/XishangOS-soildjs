@@ -9,7 +9,7 @@ import { useSysMenuStore } from "@/store/system/menu";
 interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
   depth: number; // 菜单深度
-  breadcrumb: SysMenu.IBreadcrumb[]; // 祖先
+  breadcrumb: SysMenu.IBreadcrumb[];
   selectMenu: string; // 选择的菜单
   setSelectMenu: (name: string) => void;
 }
@@ -23,12 +23,26 @@ const Menu: Component<MenuProps> = (props) => {
 
   const clickDir = () => {
     openSubMenu = !openSubMenu;
+    props.setSelectMenu("");
     sysMenuStore.setBreadcrumb(props.breadcrumb);
   };
 
   const clickMenu = () => {
     props.setSelectMenu(menuInfo.name);
     sysMenuStore.setBreadcrumb(props.breadcrumb);
+    // 添加到标签页
+    const tabBars = sysMenuStore.tabBar.filter(
+      (tab) => tab.name !== menuInfo.name
+    );
+    sysMenuStore.setTabBar([
+      ...tabBars,
+      {
+        name: menuInfo.name,
+        path: menuInfo.path,
+        title: menuInfo.meta.title,
+        icon: menuInfo.meta.icon,
+      },
+    ]);
   };
 
   // 无孩子即为菜单的叶子节点

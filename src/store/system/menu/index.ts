@@ -6,7 +6,9 @@ export const useSysMenuStore = create(
   persist<SysMenu.SysMenuStore>(
     (set, get) => ({
       breadcrumb: [],
+      tabBar: [],
       setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => set({ breadcrumb }),
+      setTabBar: (tabBar: SysMenu.ITabBarItem[]) => set({ tabBar }),
     }),
     {
       name: "sysMenuStore",
