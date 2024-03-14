@@ -10,10 +10,14 @@ interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
   depth: number; // 菜单深度
   breadcrumb: SysMenu.IBreadcrumb[]; // 祖先
+  selectMenu: string; // 选择的菜单
+  setSelectMenu: (name: string) => void;
 }
 
 const Menu: Component<MenuProps> = (props) => {
   let openSubMenu = $signal(false);
+
+  const menuInfo = props.menuInfo;
 
   const sysMenuStore = useSysMenuStore();
 
@@ -23,23 +27,28 @@ const Menu: Component<MenuProps> = (props) => {
   };
 
   const clickMenu = () => {
+    props.setSelectMenu(menuInfo.name);
     sysMenuStore.setBreadcrumb(props.breadcrumb);
   };
 
-  const menuInfo = props.menuInfo;
   // 无孩子即为菜单的叶子节点
   const hasChildren = menuInfo.children && menuInfo.children.length !== 0;
 
-  const styles = {
+  const activeStyle = {
+    "background-color": "#e8f1fe",
+    "border-left": "4px solid #347bf6",
+  };
+  const paddingStyles = {
     "padding-left": props.depth * 20 * 0.8 + "px",
   };
+
   return (
     <>
       <Show when={hasChildren}>
         <div class="w-full">
           <div
             class={`w-full h-12 pr-2 flex justify-between items-center hover:bg-[#c5c5c5]"`}
-            style={styles}
+            style={paddingStyles}
             onclick={clickDir}
           >
             <div class="flex justify-start items-center">
@@ -67,6 +76,8 @@ const Menu: Component<MenuProps> = (props) => {
                             : MenuTypeEnum.MENU,
                       },
                     ]}
+                    selectMenu={props.selectMenu}
+                    setSelectMenu={props.setSelectMenu}
                   />
                 </div>
               )}
@@ -77,7 +88,11 @@ const Menu: Component<MenuProps> = (props) => {
       <Show when={!hasChildren}>
         <div
           class={`w-full h-12 flex justify-start items-center hover:bg-[#c5c5c5]`}
-          style={styles}
+          style={
+            props.selectMenu === menuInfo.name
+              ? { ...paddingStyles, ...activeStyle }
+              : paddingStyles
+          }
           onclick={clickMenu}
         >
           {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
