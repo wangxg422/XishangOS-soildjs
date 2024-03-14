@@ -23,6 +23,7 @@ export namespace SysMenu {
     path: string;
     title: string;
     type: string;
+    icon?: string;
   }
   export interface SysMenuStore {
     breadcrumb: IBreadcrumb[];

@@ -1,5 +1,9 @@
 import { useSysMenuStore } from "@/store/system/menu";
+import { MenuTypeEnum } from "@/utils/enums/menu";
+import { A } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
+import { RiSystemApps2Fill } from "solid-icons/ri";
+import { AiOutlineRight } from "solid-icons/ai";
 
 export interface HeaderMidProps extends ParentProps {}
 
@@ -9,7 +13,35 @@ const HeaderMid: Component<HeaderMidProps> = () => {
   return (
     <>
       <div class="h-full w-full flex justify-start items-end">
-        <For each={sysMenuStore.breadcrumb}>{(b) => <>{b.title}</>}</For>
+        <For each={sysMenuStore.breadcrumb}>
+          {(b, i) => {
+            const icon = <RiSystemApps2Fill />;
+            const separator = <AiOutlineRight />;
+
+            let content;
+            if (b.type === MenuTypeEnum.DIR) {
+              content = (
+                <div class="flex justify-center items-center">
+                  <div class="mx-1">{i() !== 0 && separator}</div>
+                  <div>{icon}</div>
+                  <div class="mx-1">{b.title}</div>
+                </div>
+              );
+            } else if (b.type === MenuTypeEnum.MENU) {
+              content = (
+                <div class="flex justify-center items-center">
+                  <div class="mx-1">{i() !== 0 && separator}</div>
+                  <div> {icon}</div>
+                  <div class="mx-1">
+                    <A href={b.path}>{b.title}</A>
+                  </div>
+                </div>
+              );
+            }
+
+            return <div>{content}</div>;
+          }}
+        </For>
       </div>
     </>
   );
