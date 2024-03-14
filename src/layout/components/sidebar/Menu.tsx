@@ -34,6 +34,8 @@ const Menu: Component<MenuProps> = (props) => {
     const tabBars = sysMenuStore.tabBar.filter(
       (tab) => tab.name !== menuInfo.name
     );
+    console.log(tabBars)
+    console.log(menuInfo.meta.title)
     sysMenuStore.setTabBar([
       ...tabBars,
       {
