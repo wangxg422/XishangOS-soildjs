@@ -1,6 +1,7 @@
 import defaultAppImg from "@/assets/images/default_app.png";
 import { App } from "@/interface/app";
 import "./index.scss";
+import { AppInstanceTypeEnum } from "@/utils/enums/app";
 
 export default function AppInstance(props: any) {
   let isShrink = $signal(false);
@@ -11,7 +12,11 @@ export default function AppInstance(props: any) {
     // 0左 1中 2右
     if (b === 0) {
       isShrink = false;
-      window.open(appInstance.instanceAddress, "_blank");
+      if (appInstance.instanceType === AppInstanceTypeEnum.INNER) {
+        window.location.href = appInstance.instanceAddress;
+      } else {
+        window.open(appInstance.instanceAddress, "_blank");
+      }
     } else if (b === 2) {
       isRightClick = true;
       isShrink = true;
