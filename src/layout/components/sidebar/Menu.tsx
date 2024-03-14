@@ -4,6 +4,7 @@ import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { FaSolidAngleUp, FaSolidAngleDown } from "solid-icons/fa";
 import { MenuTypeEnum } from "@/utils/enums/menu";
+import { useSysMenuStore } from "@/store/system/menu";
 
 interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
@@ -14,8 +15,15 @@ interface MenuProps extends ParentProps {
 const Menu: Component<MenuProps> = (props) => {
   let openSubMenu = $signal(false);
 
-  const clickMenu = () => {
+  const sysMenuStore = useSysMenuStore();
+
+  const clickDir = () => {
     openSubMenu = !openSubMenu;
+    sysMenuStore.setBreadcrumb(props.breadcrumb);
+  };
+
+  const clickMenu = () => {
+    sysMenuStore.setBreadcrumb(props.breadcrumb);
   };
 
   const menuInfo = props.menuInfo;
@@ -32,7 +40,7 @@ const Menu: Component<MenuProps> = (props) => {
           <div
             class={`w-full h-12 pr-2 flex justify-between items-center hover:bg-[#c5c5c5]"`}
             style={styles}
-            onclick={clickMenu}
+            onclick={clickDir}
           >
             <div class="flex justify-start items-center">
               {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
@@ -70,6 +78,7 @@ const Menu: Component<MenuProps> = (props) => {
         <div
           class={`w-full h-12 flex justify-start items-center hover:bg-[#c5c5c5]`}
           style={styles}
+          onclick={clickMenu}
         >
           {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
           <A class="ml-2" href={menuInfo.path}>
