@@ -1,4 +1,4 @@
-import { useUserInfoStore } from "@/store/sysUser";
+import { useUserInfoStore } from "@/store/system/user";
 import { type Component } from "solid-js";
 import defaultUserAvatar from "@/assets/images/user.png";
 

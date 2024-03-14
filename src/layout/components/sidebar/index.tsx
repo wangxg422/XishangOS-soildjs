@@ -1,8 +1,9 @@
-import { useUserInfoStore } from "@/store/sysUser";
+import { useUserInfoStore } from "@/store/system/user";
 import { A } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
 import Menu from "./Menu";
 import { TiDeviceDesktop } from 'solid-icons/ti'
+import { MenuTypeEnum } from "@/utils/enums/menu";
 
 interface SidebarProps extends ParentProps {}
 
@@ -17,7 +18,12 @@ const Sidebar: Component<SidebarProps> = (props) => {
         <TiDeviceDesktop size={20} class="mr-2" /><A href="/desktop">返回桌面</A>
         </div>
         <div class="w-full flex flex-col justify-start justify-items-center content-start items-start cursor-pointer">
-          <For each={menuList}>{menu => <Menu menuInfo={menu} depth={1} />}</For>
+          <For each={menuList}>{m => <Menu menuInfo={m} depth={1} breadcrumb={[{
+                name: m.name,
+                path: m.path,
+                title: m.meta.title,
+                type: m.children && m.children.length > 0 ? MenuTypeEnum.DIR : MenuTypeEnum.MENU
+              }]} />}</For>
         </div>
       </div>
     </>

@@ -18,4 +18,14 @@ export namespace SysMenu {
     meta: MenuLayoutMeta;
     children: MenuLayout[];
   }
+  export interface IBreadcrumb {
+    name: string;
+    path: string;
+    title: string;
+    type: string;
+  }
+  export interface SysMenuStore {
+    breadcrumb: IBreadcrumb[];
+    setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => void
+  }
 }

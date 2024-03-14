@@ -3,10 +3,12 @@ import { A } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { FaSolidAngleUp, FaSolidAngleDown } from "solid-icons/fa";
+import { MenuTypeEnum } from "@/utils/enums/menu";
 
 interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
   depth: number; // 菜单深度
+  breadcrumb: SysMenu.IBreadcrumb[]; // 祖先
 }
 
 const Menu: Component<MenuProps> = (props) => {
@@ -21,8 +23,8 @@ const Menu: Component<MenuProps> = (props) => {
   const hasChildren = menuInfo.children && menuInfo.children.length !== 0;
 
   const styles = {
-    "padding-left": (props.depth * 20) * 0.8 + "px"
-  }
+    "padding-left": props.depth * 20 * 0.8 + "px",
+  };
   return (
     <>
       <Show when={hasChildren}>
@@ -40,14 +42,35 @@ const Menu: Component<MenuProps> = (props) => {
           </div>
           <Show when={openSubMenu}>
             <For each={menuInfo.children}>
-              {(m) => <div class="w-full"><Menu menuInfo={m} depth={props.depth + 1} /></div>}
+              {(m) => (
+                <div class="w-full">
+                  <Menu
+                    menuInfo={m}
+                    depth={props.depth + 1}
+                    breadcrumb={[
+                      ...props.breadcrumb,
+                      {
+                        name: m.name,
+                        path: m.path,
+                        title: m.meta.title,
+                        type:
+                          m.children && m.children.length > 0
+                            ? MenuTypeEnum.DIR
+                            : MenuTypeEnum.MENU,
+                      },
+                    ]}
+                  />
+                </div>
+              )}
             </For>
           </Show>
         </div>
       </Show>
       <Show when={!hasChildren}>
-        <div class={`w-full h-12 flex justify-start items-center hover:bg-[#c5c5c5]`}
-        style={styles}>
+        <div
+          class={`w-full h-12 flex justify-start items-center hover:bg-[#c5c5c5]`}
+          style={styles}
+        >
           {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
           <A class="ml-2" href={menuInfo.path}>
             {menuInfo.meta.title}

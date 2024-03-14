@@ -7,11 +7,11 @@ export const useUserInfoStore = create(
   persist<SysUser.IUserInfoStore>(
     (set, get) => ({
       setToken: (token: string) => set({ token }),
-      setUserInfo: (userInfo: SysUser.IUserInfo) => set({ userInfo })
+      setUserInfo: (userInfo: SysUser.IUserInfo) => set({ userInfo }),
     }),
     {
       name: "userInfoStore",
-      storage: createJSONStorage(() => localStorage)
+      storage: createJSONStorage(() => localStorage),
     }
   )
-)
+);

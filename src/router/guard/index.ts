@@ -1,4 +1,4 @@
-import { useUserInfoStore } from "@/store/sysUser";
+import { useUserInfoStore } from "@/store/system/user";
 
 const userStore = useUserInfoStore();
 

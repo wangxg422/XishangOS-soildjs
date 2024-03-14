@@ -7,7 +7,7 @@ import { getInputValue } from "@/utils/element";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "solid-icons/ai";
 import "./index.scss";
 import { loginApi } from "@/api/modules/login";
-import { useUserInfoStore } from "@/store/sysUser";
+import { useUserInfoStore } from "@/store/system/user";
 import { Login } from "@/interface/login";
 
 const App: Component = () => {
