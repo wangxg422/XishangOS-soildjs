@@ -34,8 +34,6 @@ const Menu: Component<MenuProps> = (props) => {
     const tabBars = sysMenuStore.tabBar.filter(
       (tab) => tab.name !== menuInfo.name
     );
-    console.log(tabBars)
-    console.log(menuInfo.meta.title)
     sysMenuStore.setTabBar([
       ...tabBars,
       {
@@ -50,10 +48,6 @@ const Menu: Component<MenuProps> = (props) => {
   // 无孩子即为菜单的叶子节点
   const hasChildren = menuInfo.children && menuInfo.children.length !== 0;
 
-  const activeStyle = {
-    "background-color": "#e8f1fe",
-    "border-left": "4px solid #347bf6",
-  };
   const paddingStyles = {
     "padding-left": props.depth * 20 * 0.8 + "px",
   };
@@ -103,10 +97,10 @@ const Menu: Component<MenuProps> = (props) => {
       </Show>
       <Show when={!hasChildren}>
         <div
-          class={`w-full h-12 flex justify-start items-center hover:bg-[#c5c5c5]`}
+          class={`menu-item w-full h-12 flex justify-start items-center ${props.selectMenu === menuInfo.name ? "is-active" : ""}`}
           style={
             props.selectMenu === menuInfo.name
-              ? { ...paddingStyles, ...activeStyle }
+              ? { ...paddingStyles }
               : paddingStyles
           }
           onclick={clickMenu}

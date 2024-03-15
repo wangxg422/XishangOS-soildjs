@@ -1,0 +1,16 @@
+.menu-item {
+  &:hover {
+    background-color: #c5c5c5;
+  }
+  &.is-active {
+    background-color: #e8f1fe;
+  }
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    content: "";
+    background-color: #347bf6;
+  }
+}
