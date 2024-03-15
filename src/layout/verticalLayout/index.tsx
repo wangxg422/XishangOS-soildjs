@@ -22,7 +22,7 @@ const VerticalLayout: Component<VerticalLayoutProps> = (props) => {
           </div>
         </div>
         <div class="sidebar">
-        <div class="h-[60px]">
+          <div class="h-[60px]">
             <SystemLogo />
           </div>
           <Sidebar />
