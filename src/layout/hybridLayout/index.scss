@@ -1,15 +1,19 @@
-.horizontal-layout {
+.hybrid-layout {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template: "header" 60px
-                   "main" auto
-                   "footer" 30px;
+    grid-template: "header header" 60px
+                   "sidebar main" 1fr
+                   "sidebar footer" 30px / 200px 1fr;
     .header {
         background-color: #fff;
         grid-area: header;
         display: grid;
         grid-template-columns: 200px auto 200px;
+    }
+    .sidebar {
+        background-color: #fff;
+        grid-area: sidebar;
     }
     .main {
         background-color: #f6f8fa;
