@@ -9,7 +9,6 @@ const Layout: Component<LayoutProps> = (props) => {
   const layout: string = $signal("vertical");
   return (
     <>
-      <HorizontalLayout>{props.children}</HorizontalLayout>
       <Switch fallback={<ClassLayout>{props.children}</ClassLayout>}>
         <Match when={layout === "classic"}>
           <ClassLayout>{props.children}</ClassLayout>

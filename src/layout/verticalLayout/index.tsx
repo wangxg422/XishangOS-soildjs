@@ -12,17 +12,27 @@ export interface VerticalLayoutProps extends ParentProps {}
 const VerticalLayout: Component<VerticalLayoutProps> = (props) => {
   return (
     <>
-      <div class="classic-layout w-screen h-screen">
+      <div class="vertical-layout w-screen h-screen">
         <div class="header border-b">
           <div class="h-full">
             <HeaderLeft />
           </div>
-          <div class=""><HeaderMid /></div>
-          <div><HeaderRight /></div>
+          <div class="">
+            <HeaderMid />
+          </div>
+          <div>
+            <HeaderRight />
+          </div>
         </div>
-        <div class="sidebar"><Sidebar /></div>
-        <div class="main"><Main>{props.children}</Main></div>
-        <div class="footer"><Footer /></div>
+        <div class="sidebar">
+          <Sidebar />
+        </div>
+        <div class="main">
+          <Main>{props.children}</Main>
+        </div>
+        <div class="footer">
+          <Footer />
+        </div>
       </div>
     </>
   );
