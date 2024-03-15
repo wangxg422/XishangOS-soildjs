@@ -13,7 +13,7 @@ const ClassLayout: Component<ClassicLayoutProps> = (props) => {
   return (
     <>
       <div class="classic-layout w-screen h-screen">
-        <div class="header">
+        <div class="header border-b">
           <div class="h-full">
             <HeaderLeft />
           </div>
