@@ -1,15 +1,16 @@
-import type { Component } from "solid-js";
-import { Switch, Match } from "solid-js";
-import { Router } from "@solidjs/router";
-import staticRouter from "../router/staticRouters";
+import type { Component, ParentProps } from "solid-js";
+import ClassLayout from "./classLayout";
+import HorizontalLayout from "./horizontalLayout";
 
-const App: Component = () => {
-  const layout: string = $signal("vertical");
+export interface LayoutProps extends ParentProps {}
 
+const Layout: Component<LayoutProps> = (props) => {
   return (
     <>
+      {/* <ClassLayout>{props.children}</ClassLayout> */}
+      <HorizontalLayout>{props.children}</HorizontalLayout>
     </>
   );
 };
 
-export default App;
+export default Layout;

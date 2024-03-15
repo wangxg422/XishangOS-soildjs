@@ -1,0 +1,22 @@
+.classic-layout {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template: "header" 60px
+                   "main" auto
+                   "footer" 30px;
+    .header {
+        background-color: #fff;
+        grid-area: header;
+        display: grid;
+        grid-template-columns: 200px auto 200px;
+    }
+    .main {
+        background-color: #f6f8fa;
+        grid-area: main;
+    }
+    .footer {
+        background-color: #f6f8fa;
+        grid-area: footer;
+    }
+}

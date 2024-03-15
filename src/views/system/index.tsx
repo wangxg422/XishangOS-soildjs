@@ -1,4 +1,4 @@
-import ClassLayout from "@/layout/classLayout";
+import Layout from "@/layout";
 import { ParentProps, type Component } from "solid-js";
 
 export interface SystemProps extends ParentProps {}
@@ -6,7 +6,7 @@ export interface SystemProps extends ParentProps {}
 const System: Component<SystemProps> = (props) => {
   return (
     <>
-       <ClassLayout>{props.children}</ClassLayout> 
+      <Layout>{props.children}</Layout>
     </>
   );
 };
