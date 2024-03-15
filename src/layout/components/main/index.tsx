@@ -12,11 +12,11 @@ const Main: Component<MainProps> = (props) => {
 
   return (
     <>
-      <div class="w-full h-6 flex justify-start items-center bg-white">
+      <div class="w-full h-8 flex justify-start items-center bg-white">
         <For each={tabBars}>
           {(tab) => {
             return (
-              <div class="h-full flex justify-start items-center cursor-pointer">
+              <div class="h-full mx-1 flex justify-start items-center cursor-pointer hover:font-bold">
                 <div></div>
                 <div>
                   <A href={tab.path}>{tab.title}</A>

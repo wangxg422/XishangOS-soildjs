@@ -12,7 +12,7 @@ const HeaderMid: Component<HeaderMidProps> = () => {
 
   return (
     <>
-      <div class="h-full w-full flex justify-start items-end">
+      <div class="h-full w-full flex justify-start items-center">
         <For each={sysMenuStore.breadcrumb}>
           {(b, i) => {
             const icon = <RiSystemApps2Fill />;
@@ -32,7 +32,7 @@ const HeaderMid: Component<HeaderMidProps> = () => {
                 <div class="flex justify-center items-center">
                   <div class="mx-1">{i() !== 0 && separator}</div>
                   <div> {icon}</div>
-                  <div class="mx-1">
+                  <div class="mx-1 hover:font-bold">
                     <A href={b.path}>{b.title}</A>
                   </div>
                 </div>
