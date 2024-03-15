@@ -5,6 +5,8 @@ import { RiSystemApps2Fill } from "solid-icons/ri";
 import { FaSolidAngleUp, FaSolidAngleDown } from "solid-icons/fa";
 import { MenuTypeEnum } from "@/utils/enums/menu";
 import { useSysMenuStore } from "@/store/system/menu";
+import cs from "classnames";
+import "./index.scss";
 
 interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
@@ -48,17 +50,12 @@ const Menu: Component<MenuProps> = (props) => {
   // 无孩子即为菜单的叶子节点
   const hasChildren = menuInfo.children && menuInfo.children.length !== 0;
 
-  const paddingStyles = {
-    "padding-left": props.depth * 20 * 0.8 + "px",
-  };
-
   return (
     <>
       <Show when={hasChildren}>
         <div class="w-full">
           <div
             class={`w-full h-12 pr-2 flex justify-between items-center hover:bg-[#c5c5c5]"`}
-            style={paddingStyles}
             onclick={clickDir}
           >
             <div class="flex justify-start items-center">
@@ -97,12 +94,18 @@ const Menu: Component<MenuProps> = (props) => {
       </Show>
       <Show when={!hasChildren}>
         <div
-          class={`menu-item w-full h-12 flex justify-start items-center ${props.selectMenu === menuInfo.name ? "is-active" : ""}`}
-          style={
-            props.selectMenu === menuInfo.name
-              ? { ...paddingStyles }
-              : paddingStyles
-          }
+          class={cs(
+            `w-full h-12 flex justify-start items-center pl-[${8*2}px]`,
+            (() => {
+              if (props.selectMenu === menuInfo.name) {
+                return [
+                  "is-active"
+                ]
+              } else {
+                return []
+              }
+            })()
+          )}
           onclick={clickMenu}
         >
           {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
