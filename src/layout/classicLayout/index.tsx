@@ -9,7 +9,7 @@ import Main from "../components/main";
 
 export interface ClassicLayoutProps extends ParentProps {}
 
-const ClassLayout: Component<ClassicLayoutProps> = (props) => {
+const ClassicLayout: Component<ClassicLayoutProps> = (props) => {
   return (
     <>
       <div class="classic-layout w-screen h-screen">
@@ -28,4 +28,4 @@ const ClassLayout: Component<ClassicLayoutProps> = (props) => {
   );
 };
 
-export default ClassLayout;
+export default ClassicLayout;

@@ -1,5 +1,5 @@
 import type { Component, ParentProps } from "solid-js";
-import ClassLayout from "./classLayout";
+import ClassicLayout from "./classicLayout";
 import HorizontalLayout from "./horizontalLayout";
 import VerticalLayout from "./verticalLayout";
 
@@ -9,9 +9,9 @@ const Layout: Component<LayoutProps> = (props) => {
   const layout: string = $signal("vertical");
   return (
     <>
-      <Switch fallback={<ClassLayout>{props.children}</ClassLayout>}>
+      <Switch fallback={<ClassicLayout>{props.children}</ClassicLayout>}>
         <Match when={layout === "classic"}>
-          <ClassLayout>{props.children}</ClassLayout>
+          <ClassicLayout>{props.children}</ClassicLayout>
         </Match>
         <Match when={layout === "vertical"}>
           <VerticalLayout>{props.children}</VerticalLayout>
