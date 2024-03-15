@@ -1,6 +1,6 @@
 import { ParentProps, type Component } from "solid-js";
 import "./index.scss";
-import HeaderLeft from "../components/headerLeft";
+import SystemLogo from "../components/systemLogo";
 import Footer from "../components/footer";
 import HeaderRight from "../components/headerRight";
 import Sidebar from "../components/sidebar";
@@ -15,7 +15,7 @@ const ClassicLayout: Component<ClassicLayoutProps> = (props) => {
       <div class="classic-layout w-screen h-screen">
         <div class="header border-b">
           <div class="h-full">
-            <HeaderLeft />
+            <SystemLogo />
           </div>
           <div class=""><HeaderMid /></div>
           <div><HeaderRight /></div>

@@ -1,6 +1,6 @@
 import { ParentProps, type Component } from "solid-js";
 import "./index.scss";
-import HeaderLeft from "../components/headerLeft";
+import HeaderLeft from "../components/systemLogo";
 import Footer from "../components/footer";
 import HeaderRight from "../components/headerRight";
 import HeaderMid from "../components/headerMid";
