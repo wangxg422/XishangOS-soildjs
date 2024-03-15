@@ -50,12 +50,16 @@ const Menu: Component<MenuProps> = (props) => {
   // 无孩子即为菜单的叶子节点
   const hasChildren = menuInfo.children && menuInfo.children.length !== 0;
 
+  const paddingLeft = {
+    "padding-left": `${props.depth * 10 * 0.8}px`,
+  };
   return (
     <>
       <Show when={hasChildren}>
         <div class="w-full">
           <div
             class={`w-full h-12 pr-2 flex justify-between items-center hover:bg-[#c5c5c5]"`}
+            style={paddingLeft}
             onclick={clickDir}
           >
             <div class="flex justify-start items-center">
@@ -95,23 +99,23 @@ const Menu: Component<MenuProps> = (props) => {
       <Show when={!hasChildren}>
         <div
           class={cs(
-            `w-full h-12 flex justify-start items-center pl-[${8*2}px]`,
+            `w-full h-12`,
             (() => {
               if (props.selectMenu === menuInfo.name) {
-                return [
-                  "is-active"
-                ]
+                return ["menu-item-is-active hover:bg-[#ecf3fd]"];
               } else {
-                return []
+                return ["hover:bg-[#cccccc]"];
               }
             })()
           )}
           onclick={clickMenu}
         >
-          {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
-          <A class="ml-2" href={menuInfo.path}>
-            {menuInfo.meta.title}
-          </A>
+          <div class="h-full w-full flex justify-start items-center" style={paddingLeft}>
+            {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
+            <A class="ml-2" href={menuInfo.path}>
+              {menuInfo.meta.title}
+            </A>
+          </div>
         </div>
       </Show>
     </>

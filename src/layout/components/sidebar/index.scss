@@ -1,11 +1,11 @@
-.is-active {
-  background-color: blue;
+.menu-item-is-active {
+  position: relative;
+  background-color: #ecf3fd;
   &::before {
     position: absolute;
     top: 0;
     bottom: 0;
     width: 4px;
-    height: 24px;
     content: "";
     background-color: #347bf6;
   }
