@@ -1,5 +1,5 @@
 import { SysMenu } from "@/interface/system/menu";
-import { A } from "@solidjs/router";
+import { A, useNavigate } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { FaSolidAngleUp, FaSolidAngleDown } from "solid-icons/fa";
@@ -29,6 +29,7 @@ const Menu: Component<MenuProps> = (props) => {
     sysMenuStore.setBreadcrumb(props.breadcrumb);
   };
 
+  const navigate = useNavigate();
   const clickMenu = () => {
     props.setSelectMenu(menuInfo.name);
     sysMenuStore.setBreadcrumb(props.breadcrumb);
@@ -45,6 +46,7 @@ const Menu: Component<MenuProps> = (props) => {
         icon: menuInfo.meta.icon,
       },
     ]);
+    navigate(menuInfo.path, {});
   };
 
   // 无孩子即为菜单的叶子节点
@@ -112,9 +114,9 @@ const Menu: Component<MenuProps> = (props) => {
         >
           <div class="h-full w-full flex justify-start items-center" style={paddingLeft}>
             {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
-            <A class="ml-2" href={menuInfo.path}>
+            <div class="ml-2">
               {menuInfo.meta.title}
-            </A>
+            </div>
           </div>
         </div>
       </Show>
