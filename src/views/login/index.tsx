@@ -9,6 +9,7 @@ import "./index.scss";
 import { loginApi } from "@/api/modules/login";
 import { useUserInfoStore } from "@/store/system/user";
 import { Login } from "@/interface/login";
+import { useNavigate } from "@solidjs/router";
 
 const App: Component = () => {
   const userForm = $signal({
@@ -20,11 +21,12 @@ const App: Component = () => {
 
   const userStore = useUserInfoStore();
 
+  const navigate = useNavigate();
   const login = async() => {
     const res: Login.ResLogin = await loginApi({ username: userForm.username, password: userForm.password });
     userStore.setToken(res.token);
     userStore.setUserInfo(res.userInfo);
-    window.location.href = "/desktop"
+    navigate("/desktop");
   };
   const reg = () => {};
   const forgetPassword = () => {};

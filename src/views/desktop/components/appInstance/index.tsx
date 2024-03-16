@@ -2,18 +2,20 @@ import defaultAppImg from "@/assets/images/default_app.png";
 import { App } from "@/interface/app";
 import "./index.scss";
 import { AppInstanceTypeEnum } from "@/utils/enums/app";
+import { useNavigate } from "@solidjs/router";
 
 export default function AppInstance(props: any) {
   let isShrink = $signal(false);
   let isRightClick = $signal(false);
 
+  const navigate = useNavigate();
   const clickApp = (e: MouseEvent) => {
     const b = e.button;
     // 0左 1中 2右
     if (b === 0) {
       isShrink = false;
       if (appInstance.instanceType === AppInstanceTypeEnum.INNER) {
-        window.location.href = appInstance.instanceAddress;
+        navigate(appInstance.instanceAddress, {});
       } else {
         window.open(appInstance.instanceAddress, "_blank");
       }
