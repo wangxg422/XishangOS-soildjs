@@ -5,7 +5,9 @@ import Menu from "./Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
 import { MenuTypeEnum } from "@/utils/enums/menu";
 import { watch } from 'solidjs-use'
-import { useSysMenuStore } from "@/store/system/menu";
+import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
+import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
+import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 
 interface SidebarProps extends ParentProps {}
 
@@ -14,7 +16,9 @@ const Sidebar: Component<SidebarProps> = (props) => {
   const menuList = userInfoStore.userInfo?.menuList || [];
   let [selectMenu, setSelectMenu] = createSignal(""); // 单击选择的菜单
 
-  const sysMenuStore = useSysMenuStore();
+  const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
+  const setBreadcrumb = useSysMenuBreadcrumbStore(state => state.setBreadcrumb);
+  const {tabBar, setTabBar} = useSysMenuTabBarStore();
   
   const activeMenu = (name: string) => {
     setSelectMenu(name);
@@ -23,15 +27,16 @@ const Sidebar: Component<SidebarProps> = (props) => {
   // 监听选择的菜单
   watch(selectMenu, menuName => {
     console.log('menu:', menuName)
-    // 添加到面包屑
-    sysMenuStore.setBreadcrumb([...sysMenuStore.allMenuBreadcrumb[selectMenu()]]);
-    // 添加到标签页
-    // const tabBars = sysMenuStore.tabBar.filter(
-    //   (tab) => tab.name !== menuName
-    // );
-    // sysMenuStore.setTabBar([
-    //   ...tabBars,
-    // ]);
+    
+    if(menuName) {
+      // 添加到面包屑
+      setBreadcrumb(allMenuBreadcrumb[menuName]);
+      // 添加到标签页
+      const tabBars = tabBar.filter(
+          (tab) => tab.name !== menuName
+        );
+        setTabBar([...tabBars]);
+    }
   })
 
   return (
