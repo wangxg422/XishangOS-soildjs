@@ -37,6 +37,7 @@
     "solid-labels": "^0.16.0",
     "solid-toast": "^0.5.0",
     "solid-zustand": "^1.8.0",
+    "solidjs-use": "^2.3.0",
     "zustand": "^4.5.1"
   }
 }
