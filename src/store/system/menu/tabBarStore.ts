@@ -7,17 +7,15 @@ export interface SysMenuTabBarStore {
   addTabBar: (tabBar: SysMenu.ITabBarItem) => void;
 }
 
-export const useSysMenuTabBarStore = createWithStore(
-  persist<SysMenuTabBarStore>(
-    (set) => ({
-      tabBarList: [],
-      addTabBar: (tabBar: SysMenu.ITabBarItem) => set(state => {
-        return {tabBarList: [...state.tabBarList, tabBar]}
+export const useSysMenuTabBarStore = createWithStore<SysMenuTabBarStore>(
+  (set) => ({
+    tabBarList: [],
+    addTabBar: (tabBar: SysMenu.ITabBarItem) =>
+      set((state) => {
+        const list = state.tabBarList.filter(
+          (item) => item.name !== tabBar.name
+        );
+        return { tabBarList: [...list, tabBar] };
       }),
-    }),
-    {
-      name: "sysMenuTabBarStore",
-      storage: createJSONStorage(() => localStorage),
-    }
-  )
+  })
 );
