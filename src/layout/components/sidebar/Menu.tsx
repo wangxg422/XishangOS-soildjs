@@ -25,14 +25,12 @@ const Menu: Component<MenuProps> = (props) => {
 
   const clickDir = () => {
     openSubMenu = !openSubMenu;
-    props.setSelectMenu("");
-    sysMenuStore.setBreadcrumb(props.breadcrumb);
+    props.setSelectMenu(menuInfo.name);
   };
 
   const navigate = useNavigate();
   const clickMenu = () => {
     props.setSelectMenu(menuInfo.name);
-    sysMenuStore.setBreadcrumb(props.breadcrumb);
     navigate(menuInfo.path, {});
   };
 

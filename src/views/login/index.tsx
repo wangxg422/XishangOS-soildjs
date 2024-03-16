@@ -10,6 +10,8 @@ import { loginApi } from "@/api/modules/login";
 import { useUserInfoStore } from "@/store/system/user";
 import { Login } from "@/interface/login";
 import { useNavigate } from "@solidjs/router";
+import { useSysMenuStore } from "@/store/system/menu";
+import { getMenuBreadcrumb } from "@/utils/menu";
 
 const App: Component = () => {
   const userForm = $signal({
@@ -20,12 +22,14 @@ const App: Component = () => {
   let showPassword = $signal(false);
 
   const userStore = useUserInfoStore();
+  const menuStore = useSysMenuStore();
 
   const navigate = useNavigate();
   const login = async() => {
     const res: Login.ResLogin = await loginApi({ username: userForm.username, password: userForm.password });
     userStore.setToken(res.token);
     userStore.setUserInfo(res.userInfo);
+    menuStore.setAllMenuBreadcrumb(getMenuBreadcrumb(res.userInfo.menuList));
     navigate("/desktop");
   };
   const reg = () => {};

@@ -18,6 +18,9 @@ export namespace SysMenu {
     meta: MenuLayoutMeta;
     children: MenuLayout[];
   }
+  export interface IAllBreadcrumb {
+    [key: string]: IBreadcrumb[]
+  }
   export interface IBreadcrumb {
     name: string;
     path: string;
@@ -32,8 +35,10 @@ export namespace SysMenu {
     icon?: string;
   }
   export interface SysMenuStore {
+    allMenuBreadcrumb: IAllBreadcrumb;
     breadcrumb: IBreadcrumb[];
     tabBar: ITabBarItem[];
+    setAllMenuBreadcrumb: (breadcrumb: {[key: string]: IBreadcrumb[]}) => void
     setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => void
     setTabBar: (tabBar: SysMenu.ITabBarItem[]) => void
   }

@@ -23,13 +23,15 @@ const Sidebar: Component<SidebarProps> = (props) => {
   // 监听选择的菜单
   watch(selectMenu, menuName => {
     console.log('menu:', menuName)
+    // 添加到面包屑
+    sysMenuStore.setBreadcrumb(sysMenuStore.allMenuBreadcrumb[selectMenu()]);
     // 添加到标签页
-    const tabBars = sysMenuStore.tabBar.filter(
-      (tab) => tab.name !== menuName
-    );
-    sysMenuStore.setTabBar([
-      ...tabBars,
-    ]);
+    // const tabBars = sysMenuStore.tabBar.filter(
+    //   (tab) => tab.name !== menuName
+    // );
+    // sysMenuStore.setTabBar([
+    //   ...tabBars,
+    // ]);
   })
 
   return (
