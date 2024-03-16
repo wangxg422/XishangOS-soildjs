@@ -11,7 +11,9 @@ export const useSysMenuBreadcrumbStore = createWithStore(
   persist<SysMenuBreadcrumbStore>(
     set => ({
       breadcrumb: [],
-      setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => set(() => ({ breadcrumb })),
+      setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => set(() => { 
+        console.log("bd:", breadcrumb)
+        return { breadcrumb }}),
     }),
     {
       name: "sysMenuBreadcrumbStore",

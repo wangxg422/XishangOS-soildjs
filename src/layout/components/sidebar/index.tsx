@@ -4,7 +4,7 @@ import { ParentProps, type Component, createSignal } from "solid-js";
 import Menu from "./Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
 import { MenuTypeEnum } from "@/utils/enums/menu";
-import { watch } from 'solidjs-use'
+import { watch } from "solidjs-use";
 import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
 import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
 import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
@@ -12,32 +12,37 @@ import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 interface SidebarProps extends ParentProps {}
 
 const Sidebar: Component<SidebarProps> = (props) => {
-  const userInfo = useUserInfoStore(state => state.userInfo);
+  const userInfo = useUserInfoStore((state) => state.userInfo);
   const menuList = userInfo.menuList || [];
   let [selectMenu, setSelectMenu] = createSignal(""); // 激活的菜单
 
-  const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
-  const setBreadcrumb = useSysMenuBreadcrumbStore(state => state.setBreadcrumb);
-  const {tabBar, setTabBar} = useSysMenuTabBarStore();
-  
+  const allMenuBreadcrumb = useSysAllMenuBreadcrumb(
+    (state) => state.allMenuBreadcrumb
+  );
+  const setBreadcrumb = useSysMenuBreadcrumbStore(
+    (state) => state.setBreadcrumb
+  );
+  const { tabBar, setTabBar } = useSysMenuTabBarStore();
+
   const activeMenu = (name: string) => {
     setSelectMenu(name);
   };
 
   // 监听选择的菜单
-  watch(selectMenu, menuName => {
-    console.log('menu:', menuName)
-    
-    if(menuName) {
+  watch(selectMenu, (menuName) => {
+    console.log("menu:", menuName);
+
+    if (menuName) {
+      const bread = allMenuBreadcrumb[menuName]
+      console.log('all:', allMenuBreadcrumb)
+      console.log('bread:', bread)
       // 添加到面包屑
-      setBreadcrumb(allMenuBreadcrumb[menuName]);
+      setBreadcrumb(bread);
       // 添加到标签页
-      const tabBars = tabBar.filter(
-          (tab) => tab.name !== menuName
-        );
-        setTabBar([...tabBars]);
+      const tabBars = tabBar.filter((tab) => tab.name !== menuName);
+      setTabBar([...tabBars]);
     }
-  })
+  });
 
   return (
     <>

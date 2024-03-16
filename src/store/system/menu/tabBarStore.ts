@@ -11,7 +11,7 @@ export const useSysMenuTabBarStore = createWithStore(
   persist<SysMenuTabBarStore>(
     set => ({
       tabBar: [],
-      setTabBar: (tabBar: SysMenu.ITabBarItem[]) => set({ tabBar }),
+      setTabBar: (tabBar: SysMenu.ITabBarItem[]) => set(() => ({ tabBar })),
     }),
     {
       name: "sysMenuTabBarStore",
