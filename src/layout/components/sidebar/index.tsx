@@ -1,20 +1,21 @@
 import { useUserInfoStore } from "@/store/system/user";
 import { A } from "@solidjs/router";
 import { ParentProps, type Component, createSignal } from "solid-js";
-import Menu from "./Menu";
+import Menu from "../menu/Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
 import { MenuTypeEnum } from "@/utils/enums/menu";
 import { watch } from "solidjs-use";
 import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
 import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
 import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
+import { SysMenu } from "@/interface/system/menu";
 
 interface SidebarProps extends ParentProps {}
 
 const Sidebar: Component<SidebarProps> = (props) => {
   const userInfo = useUserInfoStore((state) => state.userInfo);
   const menuList = userInfo.menuList || [];
-  let [selectMenu, setSelectMenu] = createSignal(""); // 激活的菜单
+  let [activeMenu, setActiveMenu] = createSignal<SysMenu.MenuLayout>(); // 激活的菜单
 
   const allMenuBreadcrumb = useSysAllMenuBreadcrumb(
     (state) => state.allMenuBreadcrumb
@@ -24,23 +25,28 @@ const Sidebar: Component<SidebarProps> = (props) => {
   );
   const { tabBar, setTabBar } = useSysMenuTabBarStore();
 
-  const activeMenu = (name: string) => {
-    setSelectMenu(name);
+  const selectMenu = (menu: SysMenu.MenuLayout) => {
+    setActiveMenu(menu);
   };
 
   // 监听选择的菜单
-  watch(selectMenu, (menuName) => {
-    console.log("menu:", menuName);
+  watch(activeMenu, (menu) => {
+    console.log("menu:", menu);
 
-    if (menuName) {
-      const bread = allMenuBreadcrumb[menuName]
+    if (menu && menu.name) {
+      const bread = allMenuBreadcrumb[menu.name]
       console.log('all:', allMenuBreadcrumb)
       console.log('bread:', bread)
       // 添加到面包屑
       setBreadcrumb(bread);
       // 添加到标签页
-      const tabBars = tabBar.filter((tab) => tab.name !== menuName);
-      setTabBar([...tabBars]);
+      const tabBars = tabBar.filter((tab) => tab.name !== menu.name);
+      setTabBar([...tabBars, {
+        name: menu.name,
+        path: menu.path,
+        title: menu.meta.title,
+        icon: menu.meta.icon
+      }]);
     }
   });
 
@@ -68,8 +74,8 @@ const Sidebar: Component<SidebarProps> = (props) => {
                         : MenuTypeEnum.MENU,
                   },
                 ]}
-                selectMenu={selectMenu()}
-                setSelectMenu={activeMenu}
+                activeMenu={activeMenu()}
+                setActiveMenu={selectMenu}
               />
             )}
           </For>

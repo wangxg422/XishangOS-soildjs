@@ -11,8 +11,8 @@ interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
   depth: number; // 菜单深度
   breadcrumb: SysMenu.IBreadcrumb[];
-  selectMenu: string; // 选择的菜单
-  setSelectMenu: (name: string) => void;
+  activeMenu?: SysMenu.MenuLayout; // 选择的菜单
+  setActiveMenu: (menu: SysMenu.MenuLayout) => void;
 }
 
 const Menu: Component<MenuProps> = (props) => {
@@ -22,12 +22,12 @@ const Menu: Component<MenuProps> = (props) => {
 
   const clickDir = () => {
     openSubMenu = !openSubMenu;
-    props.setSelectMenu(menuInfo.name);
+    props.setActiveMenu(menuInfo);
   };
 
   const navigate = useNavigate();
   const clickMenu = () => {
-    props.setSelectMenu(menuInfo.name);
+    props.setActiveMenu(menuInfo);
     navigate(menuInfo.path, {});
   };
 
@@ -71,8 +71,8 @@ const Menu: Component<MenuProps> = (props) => {
                             : MenuTypeEnum.MENU,
                       },
                     ]}
-                    selectMenu={props.selectMenu}
-                    setSelectMenu={props.setSelectMenu}
+                    activeMenu={props.activeMenu}
+                    setActiveMenu={props.setActiveMenu}
                   />
                 </div>
               )}
@@ -85,7 +85,7 @@ const Menu: Component<MenuProps> = (props) => {
           class={cs(
             `w-full h-12`,
             (() => {
-              if (props.selectMenu === menuInfo.name) {
+              if (props.activeMenu?.name === menuInfo.name) {
                 return ["menu-item-is-active hover:bg-[#ecf3fd]"];
               } else {
                 return ["hover:bg-[#cccccc]"];
