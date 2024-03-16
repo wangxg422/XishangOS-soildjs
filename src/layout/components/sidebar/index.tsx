@@ -30,10 +30,9 @@ const Sidebar: Component<SidebarProps> = (props) => {
 
   // 监听选择的菜单
   watch(activeMenu, (menu?: SysMenu.MenuLayout) => {
-    console.log("menu:", menu);
-
     if (menu && menu.name) {
       const bread = allMenuBreadcrumb[menu.name];
+      console.log('bread', bread)
       // 添加到面包屑
       setBreadcrumb(bread);
       // 添加到标签页
