@@ -1,5 +1,5 @@
 import { SysMenu } from "@/interface/system/menu";
-import { A, useNavigate } from "@solidjs/router";
+import { useNavigate } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { FaSolidAngleUp, FaSolidAngleDown } from "solid-icons/fa";
