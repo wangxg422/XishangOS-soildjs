@@ -21,14 +21,13 @@ const App: Component = () => {
   });
   let showPassword = $signal(false);
 
-  const userStore = useUserInfoStore();
+  const setUserInfo = useUserInfoStore(state => state.setUserInfo);
   const setAllMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.setAllMenuBreadcrumb);
 
   const navigate = useNavigate();
   const login = async() => {
     const res: Login.ResLogin = await loginApi({ username: userForm.username, password: userForm.password });
-    userStore.setToken(res.token);
-    userStore.setUserInfo(res.userInfo);
+    setUserInfo({...res.userInfo, token: res.token})
     setAllMenuBreadcrumb(getMenuBreadcrumb(res.userInfo.menuList));
     navigate("/desktop");
   };
