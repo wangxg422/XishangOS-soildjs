@@ -33,7 +33,7 @@ class RequestHttp {
      */
     this.service.interceptors.request.use(
       (config: CustomAxiosRequestConfig) => {
-        const userStore = useUserInfoStore();
+        const userInfo = useUserInfoStore(state => state.userInfo);
         // 重复请求不需要取消，在 api 服务中通过指定的第三个参数: { cancel: false } 来控制
         config.cancel ?? (config.cancel = true);
         config.cancel && axiosCanceler.addPending(config);
@@ -41,7 +41,7 @@ class RequestHttp {
         config.loading ?? (config.loading = true);
         //config.loading && showFullScreenLoading();
         if (config.headers && typeof config.headers.set === "function") {
-          config.headers.set("x-access-token", userStore.token);
+          config.headers.set("x-access-token", userInfo.token);
         }
         return config;
       },

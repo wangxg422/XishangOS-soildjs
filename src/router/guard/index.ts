@@ -1,10 +1,10 @@
 import { useUserInfoStore } from "@/store/system/user";
 
-const userStore = useUserInfoStore();
+const userInfo = useUserInfoStore(state => state.userInfo);
 
 // 路由守卫
 export default function routerGuard() {
-    if (!userStore.token) {
+    if (!userInfo.token) {
         // alert("请先登录");
         return true;
     }

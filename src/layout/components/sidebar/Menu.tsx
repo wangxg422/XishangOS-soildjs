@@ -4,7 +4,6 @@ import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { FaSolidAngleUp, FaSolidAngleDown } from "solid-icons/fa";
 import { MenuTypeEnum } from "@/utils/enums/menu";
-import { useSysMenuStore } from "@/store/system/menu";
 import cs from "classnames";
 import "./index.scss";
 
@@ -20,8 +19,6 @@ const Menu: Component<MenuProps> = (props) => {
   let openSubMenu = $signal(false);
 
   const menuInfo = props.menuInfo;
-
-  const sysMenuStore = useSysMenuStore();
 
   const clickDir = () => {
     openSubMenu = !openSubMenu;

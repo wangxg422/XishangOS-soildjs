@@ -1,19 +1,19 @@
-import { useSysMenuStore } from "@/store/system/menu";
 import { MenuTypeEnum } from "@/utils/enums/menu";
 import { A } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { AiOutlineRight } from "solid-icons/ai";
+import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
 
 export interface HeaderMidProps extends ParentProps {}
 
 const HeaderMid: Component<HeaderMidProps> = () => {
-  const sysMenuStore = useSysMenuStore();
+  const breadcrumbList = useSysMenuBreadcrumbStore(state => state.breadcrumb);
 
   return (
     <>
       <div class="h-full w-full flex justify-start items-center">
-        <For each={sysMenuStore.breadcrumb}>
+        <For each={breadcrumbList}>
           {(b, i) => {
             const icon = <RiSystemApps2Fill />;
             const separator = <AiOutlineRight />;

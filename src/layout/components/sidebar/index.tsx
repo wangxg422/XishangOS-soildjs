@@ -12,9 +12,9 @@ import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 interface SidebarProps extends ParentProps {}
 
 const Sidebar: Component<SidebarProps> = (props) => {
-  const userInfoStore = useUserInfoStore();
-  const menuList = userInfoStore.userInfo?.menuList || [];
-  let [selectMenu, setSelectMenu] = createSignal(""); // 单击选择的菜单
+  const userInfo = useUserInfoStore(state => state.userInfo);
+  const menuList = userInfo.menuList || [];
+  let [selectMenu, setSelectMenu] = createSignal(""); // 激活的菜单
 
   const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
   const setBreadcrumb = useSysMenuBreadcrumbStore(state => state.setBreadcrumb);

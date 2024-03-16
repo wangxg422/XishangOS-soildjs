@@ -3,13 +3,13 @@ import { type Component } from "solid-js";
 import defaultUserAvatar from "@/assets/images/user.png";
 
 const Avatar: Component = () => {
-  const userInfoStore = useUserInfoStore();
+  const userInfo = useUserInfoStore(state => state.userInfo);
 
   return (
     <>
       <div class="h-full w-full cursor-pointer flex justify-end items-center">
         <div class="text-md">
-          {userInfoStore.userInfo?.userName || "XishangOS"}
+          {userInfo.userName || "XishangOS"}
         </div>
         <div class="avatar mx-2">
           <div class="w-8 rounded-full">
