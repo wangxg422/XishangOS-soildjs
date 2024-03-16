@@ -22,30 +22,27 @@ const Sidebar: Component<SidebarProps> = (props) => {
   const setBreadcrumb = useSysMenuBreadcrumbStore(
     (state) => state.setBreadcrumb
   );
-  const { tabBarList, setTabBarList } = useSysMenuTabBarStore();
+  const addTabBar = useSysMenuTabBarStore((state) => state.addTabBar);
 
   const selectMenu = (menu: SysMenu.MenuLayout) => {
     setActiveMenu(menu);
   };
 
   // 监听选择的菜单
-  watch(activeMenu, (menu) => {
+  watch(activeMenu, (menu?: SysMenu.MenuLayout) => {
     console.log("menu:", menu);
 
     if (menu && menu.name) {
-      const bread = allMenuBreadcrumb[menu.name]
-      console.log('all:', allMenuBreadcrumb)
-      console.log('bread:', bread)
+      const bread = allMenuBreadcrumb[menu.name];
       // 添加到面包屑
       setBreadcrumb(bread);
       // 添加到标签页
-      const tabBars = tabBarList.filter((tab) => tab.name !== menu.name);
-      setTabBarList([...tabBars, {
+      addTabBar({
         name: menu.name,
         path: menu.path,
         title: menu.meta.title,
-        icon: menu.meta.icon
-      }]);
+        icon: menu.meta.icon,
+      });
     }
   });
 

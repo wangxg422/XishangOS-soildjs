@@ -4,14 +4,16 @@ import { SysMenu } from "@/interface/system/menu";
 
 export interface SysMenuTabBarStore {
   tabBarList: SysMenu.ITabBarItem[];
-  setTabBarList: (tabBar: SysMenu.ITabBarItem[]) => void;
+  addTabBar: (tabBar: SysMenu.ITabBarItem) => void;
 }
 
 export const useSysMenuTabBarStore = createWithStore(
   persist<SysMenuTabBarStore>(
     (set) => ({
       tabBarList: [],
-      setTabBarList: (tabBarList: SysMenu.ITabBarItem[]) => set(() => ({ tabBarList })),
+      addTabBar: (tabBar: SysMenu.ITabBarItem) => set(state => {
+        return {tabBarList: [...state.tabBarList, tabBar]}
+      }),
     }),
     {
       name: "sysMenuTabBarStore",
