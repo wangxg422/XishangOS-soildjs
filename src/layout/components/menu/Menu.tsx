@@ -10,7 +10,6 @@ import "./index.scss";
 interface MenuProps extends ParentProps {
   menuInfo: SysMenu.MenuLayout;
   depth: number; // 菜单深度
-  breadcrumb: SysMenu.IBreadcrumb[];
   activeMenu?: SysMenu.MenuLayout; // 选择的菜单
   setActiveMenu: (menu: SysMenu.MenuLayout) => void;
 }
@@ -59,18 +58,6 @@ const Menu: Component<MenuProps> = (props) => {
                   <Menu
                     menuInfo={m}
                     depth={props.depth + 1}
-                    breadcrumb={[
-                      ...props.breadcrumb,
-                      {
-                        name: m.name,
-                        path: m.path,
-                        title: m.meta.title,
-                        type:
-                          m.children && m.children.length > 0
-                            ? MenuTypeEnum.DIR
-                            : MenuTypeEnum.MENU,
-                      },
-                    ]}
                     activeMenu={props.activeMenu}
                     setActiveMenu={props.setActiveMenu}
                   />

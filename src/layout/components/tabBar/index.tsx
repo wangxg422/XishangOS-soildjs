@@ -6,7 +6,7 @@ import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 export interface TabBarProps extends ParentProps {}
 
 const TabBar: Component<TabBarProps> = (props) => {
-  const tabBarList = useSysMenuTabBarStore(state => state.tabBar);
+  const tabBarList = useSysMenuTabBarStore(state => state.tabBarList);
 
   return (
     <>

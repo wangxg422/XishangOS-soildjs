@@ -3,7 +3,6 @@ import { A } from "@solidjs/router";
 import { ParentProps, type Component, createSignal } from "solid-js";
 import Menu from "../menu/Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
-import { MenuTypeEnum } from "@/utils/enums/menu";
 import { watch } from "solidjs-use";
 import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
 import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
@@ -23,7 +22,7 @@ const Sidebar: Component<SidebarProps> = (props) => {
   const setBreadcrumb = useSysMenuBreadcrumbStore(
     (state) => state.setBreadcrumb
   );
-  const { tabBar, setTabBar } = useSysMenuTabBarStore();
+  const { tabBarList, setTabBarList } = useSysMenuTabBarStore();
 
   const selectMenu = (menu: SysMenu.MenuLayout) => {
     setActiveMenu(menu);
@@ -40,8 +39,8 @@ const Sidebar: Component<SidebarProps> = (props) => {
       // 添加到面包屑
       setBreadcrumb(bread);
       // 添加到标签页
-      const tabBars = tabBar.filter((tab) => tab.name !== menu.name);
-      setTabBar([...tabBars, {
+      const tabBars = tabBarList.filter((tab) => tab.name !== menu.name);
+      setTabBarList([...tabBars, {
         name: menu.name,
         path: menu.path,
         title: menu.meta.title,
@@ -63,17 +62,6 @@ const Sidebar: Component<SidebarProps> = (props) => {
               <Menu
                 menuInfo={m}
                 depth={1}
-                breadcrumb={[
-                  {
-                    name: m.name,
-                    path: m.path,
-                    title: m.meta.title,
-                    type:
-                      m.children && m.children.length > 0
-                        ? MenuTypeEnum.DIR
-                        : MenuTypeEnum.MENU,
-                  },
-                ]}
                 activeMenu={activeMenu()}
                 setActiveMenu={selectMenu}
               />
