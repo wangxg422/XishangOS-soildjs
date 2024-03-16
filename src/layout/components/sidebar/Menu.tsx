@@ -33,19 +33,6 @@ const Menu: Component<MenuProps> = (props) => {
   const clickMenu = () => {
     props.setSelectMenu(menuInfo.name);
     sysMenuStore.setBreadcrumb(props.breadcrumb);
-    // 添加到标签页
-    const tabBars = sysMenuStore.tabBar.filter(
-      (tab) => tab.name !== menuInfo.name
-    );
-    sysMenuStore.setTabBar([
-      ...tabBars,
-      {
-        name: menuInfo.name,
-        path: menuInfo.path,
-        title: menuInfo.meta.title,
-        icon: menuInfo.meta.icon,
-      },
-    ]);
     navigate(menuInfo.path, {});
   };
 

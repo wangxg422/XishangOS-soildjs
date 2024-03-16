@@ -1,20 +1,36 @@
 import { useUserInfoStore } from "@/store/system/user";
 import { A } from "@solidjs/router";
-import { ParentProps, type Component } from "solid-js";
+import { ParentProps, type Component, createSignal } from "solid-js";
 import Menu from "./Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
 import { MenuTypeEnum } from "@/utils/enums/menu";
+import { watch } from 'solidjs-use'
+import { useSysMenuStore } from "@/store/system/menu";
 
 interface SidebarProps extends ParentProps {}
 
 const Sidebar: Component<SidebarProps> = (props) => {
   const userInfoStore = useUserInfoStore();
   const menuList = userInfoStore.userInfo?.menuList || [];
-  let selectMenu = $signal(""); // 单击选择的菜单
+  let [selectMenu, setSelectMenu] = createSignal(""); // 单击选择的菜单
 
-  const setSelectMenu = (name: string) => {
-    selectMenu = name;
+  const sysMenuStore = useSysMenuStore();
+  
+  const activeMenu = (name: string) => {
+    setSelectMenu(name);
   };
+
+  // 监听选择的菜单
+  watch(selectMenu, menuName => {
+    console.log('menu:', menuName)
+    // 添加到标签页
+    const tabBars = sysMenuStore.tabBar.filter(
+      (tab) => tab.name !== menuName
+    );
+    sysMenuStore.setTabBar([
+      ...tabBars,
+    ]);
+  })
 
   return (
     <>
@@ -40,8 +56,8 @@ const Sidebar: Component<SidebarProps> = (props) => {
                         : MenuTypeEnum.MENU,
                   },
                 ]}
-                selectMenu={selectMenu}
-                setSelectMenu={setSelectMenu}
+                selectMenu={selectMenu()}
+                setSelectMenu={activeMenu}
               />
             )}
           </For>
