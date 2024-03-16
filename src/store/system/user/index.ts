@@ -1,4 +1,4 @@
-import create from "solid-zustand";
+import { createWithStore } from "solid-zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { SysUser } from "@/interface/system/user";
 
@@ -7,8 +7,7 @@ export interface UserInfoStore {
   setUserInfo: (userInfo: SysUser.IUserInfo) => void
 }
 
-// 使用 zustand 的 persist 中间件进行持久化
-export const useUserInfoStore = create(
+export const useUserInfoStore = createWithStore(
   persist<UserInfoStore>(
     set => ({
       userInfo: {

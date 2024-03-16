@@ -27,7 +27,7 @@ const App: Component = () => {
   const navigate = useNavigate();
   const login = async() => {
     const res: Login.ResLogin = await loginApi({ username: userForm.username, password: userForm.password });
-    setUserInfo({...res.userInfo, token: res.token})
+    setUserInfo({...res.userInfo, token: res.token});
     setAllMenuBreadcrumb(getMenuBreadcrumb(res.userInfo.menuList));
     navigate("/desktop");
   };

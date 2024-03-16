@@ -19,9 +19,9 @@ export const getMenuBreadcrumb = (menus: SysMenu.MenuLayout[], parent: SysMenu.I
             type: m.children && m.children.length > 0 ? MenuTypeEnum.DIR : MenuTypeEnum.MENU
         }]
         if(m.children && m.children.length > 0) {
-            result = getMenuBreadcrumb(m.children,result[m.name] , result)
+            result = getMenuBreadcrumb(m.children, result[m.name], result)
         }
     }
-
+    
     return result;
 }

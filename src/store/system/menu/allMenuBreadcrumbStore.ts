@@ -4,14 +4,17 @@ import { SysMenu } from "@/interface/system/menu";
 
 export interface SysAllMenuBreadcrumb {
   allMenuBreadcrumb: SysMenu.IAllBreadcrumb;
-  setAllMenuBreadcrumb: (breadcrumb: {[key: string]: SysMenu.IBreadcrumb[]}) => void
+  setAllMenuBreadcrumb: (breadcrumb: {
+    [key: string]: SysMenu.IBreadcrumb[];
+  }) => void;
 }
 
 export const useSysAllMenuBreadcrumb = createWithStore(
   persist<SysAllMenuBreadcrumb>(
-    set => ({
+    (set) => ({
       allMenuBreadcrumb: {},
-      setAllMenuBreadcrumb: (allMenuBreadcrumb: SysMenu.IAllBreadcrumb) => set(() => ({ allMenuBreadcrumb })),
+      setAllMenuBreadcrumb: (allMenuBreadcrumb: SysMenu.IAllBreadcrumb) =>
+        set(() => ({ allMenuBreadcrumb })),
     }),
     {
       name: "sysAllMenuBreadcrumb",

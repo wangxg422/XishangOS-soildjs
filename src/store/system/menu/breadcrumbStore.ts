@@ -4,16 +4,15 @@ import { SysMenu } from "@/interface/system/menu";
 
 export interface SysMenuBreadcrumbStore {
   breadcrumb: SysMenu.IBreadcrumb[];
-  setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => void
+  setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => void;
 }
 
 export const useSysMenuBreadcrumbStore = createWithStore(
   persist<SysMenuBreadcrumbStore>(
-    set => ({
+    (set) => ({
       breadcrumb: [],
-      setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) => set(() => { 
-        console.log("bd:", breadcrumb)
-        return { breadcrumb }}),
+      setBreadcrumb: (breadcrumb: SysMenu.IBreadcrumb[]) =>
+        set(() => ({ breadcrumb })),
     }),
     {
       name: "sysMenuBreadcrumbStore",
