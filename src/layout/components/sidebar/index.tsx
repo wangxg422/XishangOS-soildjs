@@ -29,18 +29,20 @@ const Sidebar: Component<SidebarProps> = (props) => {
   };
 
   // 监听选择的菜单
-  watch(activeMenu, (menu?: SysMenu.MenuLayout) => {
-    if (menu && menu.name) {
-      const bread = allMenuBreadcrumb[menu.name];
-      console.log('bread', bread)
+  watch(activeMenu, (activeMenu?: SysMenu.MenuLayout) => {
+    if (activeMenu && activeMenu.name) {
+      const bread = allMenuBreadcrumb[activeMenu.name];
+      console.log('allBread:', allMenuBreadcrumb)
+      console.log('activeMenu:',activeMenu.name)
+      console.log('bread:', bread)
       // 添加到面包屑
       setBreadcrumb(bread);
       // 添加到标签页
       addTabBar({
-        name: menu.name,
-        path: menu.path,
-        title: menu.meta.title,
-        icon: menu.meta.icon,
+        name: activeMenu.name,
+        path: activeMenu.path,
+        title: activeMenu.meta.title,
+        icon: activeMenu.meta.icon,
       });
     }
   });

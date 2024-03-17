@@ -17,7 +17,7 @@ export namespace App {
         instanceType: string;
         installer: string;
         desc: string;
-        status: number;
+        status: string;
         createAt: string;
         updateAt: string;
     }

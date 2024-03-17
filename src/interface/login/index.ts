@@ -43,10 +43,6 @@ export namespace Login {
     username: string;
     password: string;
   }
-  export interface ResLogin {
-    token: string;
-    userInfo: SysUser.IUserInfo
-  }
   export interface ResAuthButtons {
     [key: string]: string[];
   }

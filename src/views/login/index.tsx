@@ -12,6 +12,7 @@ import { Login } from "@/interface/login";
 import { useNavigate } from "@solidjs/router";
 import { getMenuBreadcrumb } from "@/utils/menu";
 import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
+import { SysUser } from "@/interface/system/user";
 
 const App: Component = () => {
   const userForm = $signal({
@@ -26,9 +27,9 @@ const App: Component = () => {
 
   const navigate = useNavigate();
   const login = async() => {
-    const res: Login.ResLogin = await loginApi({ username: userForm.username, password: userForm.password });
-    setUserInfo({...res.userInfo, token: res.token});
-    setAllMenuBreadcrumb(getMenuBreadcrumb(res.userInfo.menuList));
+    const userInfo: SysUser.IUserInfo = await loginApi({ username: userForm.username, password: userForm.password });
+    setUserInfo(userInfo);
+    setAllMenuBreadcrumb(getMenuBreadcrumb(userInfo.menuList));
     navigate("/desktop");
   };
   const reg = () => {};
