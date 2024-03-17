@@ -10,6 +10,8 @@ export default function AppInstance(props: any) {
 
   const navigate = useNavigate();
   const clickApp = (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
     const b = e.button;
     // 0左 1中 2右
     if (b === 0) {
@@ -24,7 +26,6 @@ export default function AppInstance(props: any) {
       isShrink = true;
     } else {
     }
-    e.stopPropagation();
   };
 
   const appInstance: App.Instance = props.appInstanceInfo;
