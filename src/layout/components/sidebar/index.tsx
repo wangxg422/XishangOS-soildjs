@@ -16,9 +16,6 @@ const Sidebar: Component<SidebarProps> = (props) => {
   const menuList = userInfo.menuList || [];
   let [activeMenu, setActiveMenu] = createSignal<SysMenu.MenuLayout>(); // 激活的菜单
 
-  const allMenuBreadcrumb = useSysAllMenuBreadcrumb(
-    (state) => state.allMenuBreadcrumb
-  );
   const setBreadcrumb = useSysMenuBreadcrumbStore(
     (state) => state.setBreadcrumb
   );
@@ -31,12 +28,8 @@ const Sidebar: Component<SidebarProps> = (props) => {
   // 监听选择的菜单
   watch(activeMenu, (activeMenu?: SysMenu.MenuLayout) => {
     if (activeMenu && activeMenu.name) {
-      const bread = allMenuBreadcrumb[activeMenu.name];
-      console.log('allBread:', allMenuBreadcrumb)
-      console.log('activeMenu:',activeMenu.name)
-      console.log('bread:', bread)
       // 添加到面包屑
-      setBreadcrumb(bread);
+      setBreadcrumb(activeMenu.name);
       // 添加到标签页
       addTabBar({
         name: activeMenu.name,
