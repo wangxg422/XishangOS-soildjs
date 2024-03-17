@@ -15,7 +15,7 @@ export default function AppInstance(props: any) {
     if (b === 0) {
       isShrink = false;
       if (appInstance.instanceType === AppInstanceTypeEnum.INNER) {
-        navigate(appInstance.instanceAddress, {});
+        navigate(appInstance.instanceAddress, {replace: true});
       } else {
         window.open(appInstance.instanceAddress, "_blank");
       }
