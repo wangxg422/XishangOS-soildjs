@@ -12,7 +12,20 @@ const routes: RouteDefinition[] = [
             {
                 path: "/desktop",
                 component: lazy(() => import("@/views/desktop"))
-            },
+            }
+        ]
+    },
+    {
+        path: "/",
+        children: [
+            // {
+            //     path: "/",
+            //     component: lazy(() => import("@/views/desktop"))
+            // },
+            // {
+            //     path: "/desktop",
+            //     component: lazy(() => import("@/views/desktop"))
+            // },
             {
                 path: "/system",
                 component: lazy(() => import("@/views/system")),
@@ -38,7 +51,25 @@ const routes: RouteDefinition[] = [
                         component: lazy(() => import("@/views/system/dept"))
                     }
                 ]
-            }
+            },
+            {
+                path: "/app",
+                component: lazy(() => import("@/views/application")),
+                children: [
+                    {
+                        path: "/",
+                        component: lazy(() => import("@/views/application"))
+                    },
+                    {
+                        path: "/pkg",
+                        component: lazy(() => import("@/views/application/package"))
+                    },
+                    {
+                        path: "/instance",
+                        component: lazy(() => import("@/views/application/instance"))
+                    },
+                ]
+            },
         ]
     },
 ];

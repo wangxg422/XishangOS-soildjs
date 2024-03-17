@@ -30,7 +30,7 @@ const App: Component = () => {
     const userInfo: SysUser.IUserInfo = await loginApi({ username: userForm.username, password: userForm.password });
     setUserInfo(userInfo);
     setAllMenuBreadcrumb(getMenuBreadcrumb(userInfo.menuList));
-    navigate("/desktop");
+    navigate("/");
   };
   const reg = () => {};
   const forgetPassword = () => {};

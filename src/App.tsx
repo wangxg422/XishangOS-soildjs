@@ -14,7 +14,8 @@ const App: Component = () => {
     //   </Show>
     // </>
     <>
-      <Router>{[...staticRoute, ...routes]}</Router>
+      <Router>{staticRoute}</Router>
+      <Router>{routes}</Router>
     </>
   );
 };
