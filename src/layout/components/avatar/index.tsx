@@ -8,7 +8,7 @@ const Avatar: Component = () => {
   return (
     <>
       <div class="h-full w-full cursor-pointer flex justify-end items-center">
-        <div class="text-md">{userInfo.userName || "XishangOS"}</div>
+        <div class="text-md">{userInfo.userName}</div>
         <div class="avatar mx-2">
           <div class="w-8 rounded-full">
             <img src={defaultUserAvatar} alt="xishang" />
