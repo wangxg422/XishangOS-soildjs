@@ -30,6 +30,7 @@ const Menu: Component<MenuProps> = props => {
 
   const navigate = useNavigate();
   const clickMenu = () => {
+    openSubMenu = true;
     props.setActiveMenu(props.menuInfo);
     navigate(props.menuInfo.path, { replace: true });
   };
