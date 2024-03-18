@@ -12,18 +12,14 @@ import solidLabels from "babel-plugin-solid-labels";
  * 创建 vite 插件
  * @param viteEnv
  */
-export const createVitePlugins = (
-  viteEnv: ViteEnv
-): (PluginOption | PluginOption[])[] => {
+export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOption[])[] => {
   const { VITE_GLOB_APP_TITLE, VITE_REPORT, VITE_PWA } = viteEnv;
   return [
     devtools(),
     solidPlugin({
       babel: {
-        plugins: [
-          [solidLabels, { dev: process.env.NODE_ENV !== "production" }],
-        ],
-      },
+        plugins: [[solidLabels, { dev: process.env.NODE_ENV !== "production" }]]
+      }
     }),
     // esLint 报错信息显示在浏览器界面上
     eslintPlugin(),
@@ -38,8 +34,8 @@ export const createVitePlugins = (
       (visualizer({
         filename: "stats.html",
         gzipSize: true,
-        brotliSize: true,
-      }) as PluginOption),
+        brotliSize: true
+      }) as PluginOption)
   ];
 };
 
@@ -48,10 +44,7 @@ export const createVitePlugins = (
  * @param viteEnv
  */
 const createCompression = (viteEnv: ViteEnv): PluginOption | PluginOption[] => {
-  const {
-    VITE_BUILD_COMPRESS = "none",
-    VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
-  } = viteEnv;
+  const { VITE_BUILD_COMPRESS = "none", VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv;
   const compressList = VITE_BUILD_COMPRESS.split(",");
   const plugins: PluginOption[] = [];
   if (compressList.includes("gzip")) {
@@ -59,7 +52,7 @@ const createCompression = (viteEnv: ViteEnv): PluginOption | PluginOption[] => {
       viteCompression({
         ext: ".gz",
         algorithm: "gzip",
-        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
+        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
       })
     );
   }
@@ -68,7 +61,7 @@ const createCompression = (viteEnv: ViteEnv): PluginOption | PluginOption[] => {
       viteCompression({
         ext: ".br",
         algorithm: "brotliCompress",
-        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE,
+        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
       })
     );
   }
@@ -91,20 +84,20 @@ const createVitePwa = (viteEnv: ViteEnv): PluginOption | PluginOption[] => {
         {
           src: "/logo.png",
           sizes: "192x192",
-          type: "image/png",
+          type: "image/png"
+        },
+        {
+          src: "/logo.png",
+          sizes: "512x512",
+          type: "image/png"
         },
         {
           src: "/logo.png",
           sizes: "512x512",
           type: "image/png",
-        },
-        {
-          src: "/logo.png",
-          sizes: "512x512",
-          type: "image/png",
-          purpose: "any maskable",
-        },
-      ],
-    },
+          purpose: "any maskable"
+        }
+      ]
+    }
   });
 };
