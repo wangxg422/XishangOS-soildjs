@@ -3,10 +3,11 @@ import { A } from "@solidjs/router";
 import { ParentProps, type Component, createSignal, createEffect } from "solid-js";
 import Menu from "../menu/Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
-// import { watch } from "solidjs-use";
+//import { watch } from "solidjs-use";
 import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
 import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 import { SysMenu } from "@/interface/system/menu";
+import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
 
 interface SidebarProps extends ParentProps {}
 
@@ -19,7 +20,7 @@ const Sidebar: Component<SidebarProps> = props => {
   const addTabBar = useSysMenuTabBarStore(state => state.addTabBar);
 
   const selectMenu = (menu: SysMenu.MenuLayout) => {
-    setActiveMenu(menu);
+    setActiveMenu({ ...menu });
   };
 
   // 监听选择的菜单
@@ -32,7 +33,7 @@ const Sidebar: Component<SidebarProps> = props => {
   //       name: activeMenu.name,
   //       path: activeMenu.path,
   //       title: activeMenu.meta.title,
-  //       icon: activeMenu.meta.icon,
+  //       icon: activeMenu.meta.icon
   //     });
   //   }
   // });

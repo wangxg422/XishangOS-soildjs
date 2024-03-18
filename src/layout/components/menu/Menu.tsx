@@ -20,10 +20,10 @@ const Menu: Component<MenuProps> = props => {
   const clickDir = () => {
     if (openSubMenu) {
       openSubMenu = false;
-      //props.setActiveMenu(props.menuInfo);
+      props.setActiveMenu(props.menuInfo);
     } else {
       openSubMenu = true;
-      //props.setActiveMenu(props.menuInfo);
+      props.setActiveMenu(props.menuInfo);
     }
   };
 

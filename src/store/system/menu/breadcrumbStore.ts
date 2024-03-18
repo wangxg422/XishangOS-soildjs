@@ -8,6 +8,8 @@ export interface SysMenuBreadcrumbStore {
   setBreadcrumb: (menuName: string) => void;
 }
 
+const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
+
 export const useSysMenuBreadcrumbStore = createWithStore(
   devtools(
     persist<SysMenuBreadcrumbStore>(
@@ -15,7 +17,9 @@ export const useSysMenuBreadcrumbStore = createWithStore(
         breadcrumb: [],
         setBreadcrumb: (menuName: string) =>
           set(() => {
-            const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
+            console.log(menuName);
+            console.log("bre:", allMenuBreadcrumb[menuName]);
+            console.log("all:", allMenuBreadcrumb);
             return { breadcrumb: allMenuBreadcrumb[menuName] || [] };
           })
       }),
