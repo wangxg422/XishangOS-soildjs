@@ -14,12 +14,13 @@ export namespace SysMenu {
     path: string;
     name: string;
     redirect: string;
+    type: string;
     component: string;
     meta: MenuLayoutMeta;
     children: MenuLayout[];
   }
   export interface IAllBreadcrumb {
-    [key: string]: IBreadcrumb[]
+    [key: string]: IBreadcrumb[];
   }
   export interface IBreadcrumb {
     name: string;

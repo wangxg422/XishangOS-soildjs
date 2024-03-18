@@ -18,9 +18,10 @@ const Menu: Component<MenuProps> = props => {
   let openSubMenu = $signal(false);
 
   const clickDir = () => {
+    // 点击折叠
     if (openSubMenu) {
       openSubMenu = false;
-      props.setActiveMenu(props.menuInfo);
+      //props.setActiveMenu(props.menuInfo);
     } else {
       openSubMenu = true;
       props.setActiveMenu(props.menuInfo);
@@ -33,15 +34,12 @@ const Menu: Component<MenuProps> = props => {
     navigate(props.menuInfo.path, { replace: true });
   };
 
-  // 无孩子即为菜单的叶子节点
-  const hasChildren = props.menuInfo.children && props.menuInfo.children.length !== 0;
-
   const paddingLeft = {
     "padding-left": `${props.depth * 10 * 0.8}px`
   };
   return (
     <>
-      <Show when={hasChildren}>
+      <Show when={props.menuInfo.type === MenuTypeEnum.DIR}>
         <div class="w-full">
           <div
             class={`w-full h-12 pr-2 flex justify-between items-center hover:bg-[#c5c5c5]"`}
@@ -65,7 +63,7 @@ const Menu: Component<MenuProps> = props => {
           </Show>
         </div>
       </Show>
-      <Show when={!hasChildren}>
+      <Show when={props.menuInfo.type === MenuTypeEnum.MENU}>
         <div
           class={cs(
             `w-full h-12`,
