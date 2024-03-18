@@ -17,7 +17,7 @@ export const useSysAllMenuBreadcrumb = createWithStore(
         set(() => ({ allMenuBreadcrumb })),
     }),
     {
-      name: "sysAllMenuBreadcrumb",
+      name: "menuBreadcrumb",
       storage: createJSONStorage(() => localStorage),
     }
   )
