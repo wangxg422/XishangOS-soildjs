@@ -16,11 +16,11 @@ export const useSysAllMenuBreadcrumb = createWithStore(
       }),
       {
         name: "menuBreadcrumbMap",
-        storage: createJSONStorage(() => localStorage)
+        storage: createJSONStorage(() => sessionStorage)
       }
     ),
     {
-      enabled: false,
+      enabled: true,
       name: "menuBreadcrumbMap"
     }
   )
