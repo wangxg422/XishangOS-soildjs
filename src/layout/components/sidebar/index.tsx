@@ -1,11 +1,10 @@
 import { useUserInfoStore } from "@/store/system/user";
 import { A } from "@solidjs/router";
-import { ParentProps, type Component, createSignal } from "solid-js";
+import { ParentProps, type Component, createSignal, createEffect } from "solid-js";
 import Menu from "../menu/Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
-import { watch } from "solidjs-use";
+// import { watch } from "solidjs-use";
 import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
-import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
 import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 import { SysMenu } from "@/interface/system/menu";
 
@@ -14,7 +13,7 @@ interface SidebarProps extends ParentProps {}
 const Sidebar: Component<SidebarProps> = (props) => {
   const userInfo = useUserInfoStore((state) => state.userInfo);
   const menuList = userInfo.menuList || [];
-  let [activeMenu, setActiveMenu] = createSignal<SysMenu.MenuLayout>(); // 激活的菜单
+  const [activeMenu, setActiveMenu] = createSignal<SysMenu.MenuLayout>(); // 激活的菜单
 
   const setBreadcrumb = useSysMenuBreadcrumbStore(
     (state) => state.setBreadcrumb
@@ -26,16 +25,31 @@ const Sidebar: Component<SidebarProps> = (props) => {
   };
 
   // 监听选择的菜单
-  watch(activeMenu, (activeMenu?: SysMenu.MenuLayout) => {
-    if (activeMenu && activeMenu.name) {
+  // watch(activeMenu, (activeMenu?: SysMenu.MenuLayout) => {
+  //   if (activeMenu && activeMenu.name) {
+  //     // 添加到面包屑
+  //     setBreadcrumb(activeMenu.name);
+  //     // 添加到标签页
+  //     addTabBar({
+  //       name: activeMenu.name,
+  //       path: activeMenu.path,
+  //       title: activeMenu.meta.title,
+  //       icon: activeMenu.meta.icon,
+  //     });
+  //   }
+  // });
+
+  createEffect(() => {
+    const menu = activeMenu();
+    if (menu && menu.name) {
       // 添加到面包屑
-      setBreadcrumb(activeMenu.name);
+      setBreadcrumb(menu.name);
       // 添加到标签页
       addTabBar({
-        name: activeMenu.name,
-        path: activeMenu.path,
-        title: activeMenu.meta.title,
-        icon: activeMenu.meta.icon,
+        name: menu.name,
+        path: menu.path,
+        title: menu.meta.title,
+        icon: menu.meta.icon,
       });
     }
   });

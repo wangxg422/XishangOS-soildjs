@@ -17,21 +17,19 @@ interface MenuProps extends ParentProps {
 const Menu: Component<MenuProps> = (props) => {
   let openSubMenu = $signal(false);
 
-  const menuInfo = props.menuInfo;
-
   const clickDir = () => {
     openSubMenu = !openSubMenu;
-    props.setActiveMenu(menuInfo);
+    props.setActiveMenu(props.menuInfo);
   };
 
   const navigate = useNavigate();
   const clickMenu = () => {
-    props.setActiveMenu(menuInfo);
-    navigate(menuInfo.path, {});
+    props.setActiveMenu(props.menuInfo);
+    navigate(props.menuInfo.path, {});
   };
 
   // 无孩子即为菜单的叶子节点
-  const hasChildren = menuInfo.children && menuInfo.children.length !== 0;
+  const hasChildren = props.menuInfo.children && props.menuInfo.children.length !== 0;
 
   const paddingLeft = {
     "padding-left": `${props.depth * 10 * 0.8}px`,
@@ -46,13 +44,13 @@ const Menu: Component<MenuProps> = (props) => {
             onclick={clickDir}
           >
             <div class="flex justify-start items-center">
-              {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
-              <div class="ml-2">{menuInfo.meta.title}</div>
+              {props.menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
+              <div class="ml-2">{props.menuInfo.meta.title}</div>
             </div>
             {openSubMenu ? <FaSolidAngleUp /> : <FaSolidAngleDown />}
           </div>
           <Show when={openSubMenu}>
-            <For each={menuInfo.children}>
+            <For each={props.menuInfo.children}>
               {(m) => (
                 <div class="w-full">
                   <Menu
@@ -72,7 +70,7 @@ const Menu: Component<MenuProps> = (props) => {
           class={cs(
             `w-full h-12`,
             (() => {
-              if (props.activeMenu?.name === menuInfo.name) {
+              if (props.activeMenu?.name === props.menuInfo.name) {
                 return ["menu-item-is-active hover:bg-[#ecf3fd]"];
               } else {
                 return ["hover:bg-[#cccccc]"];
@@ -82,9 +80,9 @@ const Menu: Component<MenuProps> = (props) => {
           onclick={clickMenu}
         >
           <div class="h-full w-full flex justify-start items-center" style={paddingLeft}>
-            {menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
+            {props.menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
             <div class="ml-2">
-              {menuInfo.meta.title}
+              {props.menuInfo.meta.title}
             </div>
           </div>
         </div>
