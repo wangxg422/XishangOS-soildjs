@@ -1,5 +1,6 @@
 import { createWithStore } from "solid-zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { createJSONStorage, persist, devtools } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
 import { SysMenu } from "@/interface/system/menu";
 
 export interface SysAllMenuBreadcrumb {
@@ -10,15 +11,19 @@ export interface SysAllMenuBreadcrumb {
 }
 
 export const useSysAllMenuBreadcrumb = createWithStore(
-  persist<SysAllMenuBreadcrumb>(
-    (set) => ({
-      allMenuBreadcrumb: {},
-      setAllMenuBreadcrumb: (allMenuBreadcrumb: SysMenu.IAllBreadcrumb) =>
-        set(() => ({ allMenuBreadcrumb })),
-    }),
-    {
-      name: "menuBreadcrumbMap",
-      storage: createJSONStorage(() => localStorage),
-    }
+  immer(
+    devtools(
+      persist<SysAllMenuBreadcrumb>(
+        (set) => ({
+          allMenuBreadcrumb: {},
+          setAllMenuBreadcrumb: (allMenuBreadcrumb: SysMenu.IAllBreadcrumb) =>
+            set(() => ({ allMenuBreadcrumb })),
+        }),
+        {
+          name: "menuBreadcrumbMap",
+          storage: createJSONStorage(() => localStorage),
+        }
+      )
+    )
   )
 );
