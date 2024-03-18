@@ -12,7 +12,8 @@ export const useSysAllMenuBreadcrumb = createWithStore(
     persist<SysAllMenuBreadcrumb>(
       set => ({
         allMenuBreadcrumb: {},
-        setAllMenuBreadcrumb: (allMenuBreadcrumb: SysMenu.IAllBreadcrumb) => set(() => ({ allMenuBreadcrumb }))
+        setAllMenuBreadcrumb: (allMenuBreadcrumb: SysMenu.IAllBreadcrumb) =>
+          set(() => ({ allMenuBreadcrumb: allMenuBreadcrumb || {} }))
       }),
       {
         name: "menuBreadcrumbMap",

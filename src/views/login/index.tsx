@@ -18,7 +18,7 @@ const App: Component = () => {
   const userForm = $signal({
     username: "",
     password: "",
-    rememberMe: "0", // 0不记住 1记住
+    rememberMe: "0" // 0不记住 1记住
   });
   let showPassword = $signal(false);
 
@@ -26,7 +26,7 @@ const App: Component = () => {
   const setAllMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.setAllMenuBreadcrumb);
 
   const navigate = useNavigate();
-  const login = async() => {
+  const login = async () => {
     const userInfo: SysUser.IUserInfo = await loginApi({ username: userForm.username, password: userForm.password });
     setUserInfo(userInfo);
     setAllMenuBreadcrumb(getMenuBreadcrumb(userInfo.menuList));
@@ -58,20 +58,11 @@ const App: Component = () => {
           </div>
           <label class="input input-bordered flex items-center gap-2 w-full">
             <ImUser />
-            <input
-              type="text"
-              class="grow"
-              placeholder="用户名"
-              oninput={usernameInput}
-            />
+            <input type="text" class="grow" placeholder="用户名" oninput={usernameInput} />
           </label>
           <label class="input input-bordered flex items-center gap-2 w-full mb-2 mt-2">
             <AiFillLock />
-            <input
-              type={showPassword ? "text" : "password"}
-              class="grow"
-              oninput={passwordInput}
-            />
+            <input type={showPassword ? "text" : "password"} class="grow" oninput={passwordInput} />
             <div
               class="hover:cursor-pointer"
               onmousedown={() => (showPassword = true)}
@@ -97,10 +88,7 @@ const App: Component = () => {
               />
               <span class="ml-2 text-md">记住我</span>
             </div>
-            <div
-              class="text-md hover:text-sky-700 hover:font-bold"
-              onclick={forgetPassword}
-            >
+            <div class="text-md hover:text-sky-700 hover:font-bold" onclick={forgetPassword}>
               忘记密码?
             </div>
           </div>

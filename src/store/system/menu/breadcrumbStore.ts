@@ -16,10 +16,7 @@ export const useSysMenuBreadcrumbStore = createWithStore(
         setBreadcrumb: (menuName: string) =>
           set(() => {
             const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
-            console.log("all:", allMenuBreadcrumb);
-            console.log("name:", menuName);
-            console.log("bread:", allMenuBreadcrumb[menuName]);
-            return { breadcrumb: allMenuBreadcrumb[menuName] };
+            return { breadcrumb: allMenuBreadcrumb[menuName] || [] };
           })
       }),
       {
