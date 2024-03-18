@@ -18,14 +18,19 @@ const Menu: Component<MenuProps> = props => {
   let openSubMenu = $signal(false);
 
   const clickDir = () => {
-    openSubMenu = !openSubMenu;
-    props.setActiveMenu(props.menuInfo);
+    if (openSubMenu) {
+      openSubMenu = false;
+      //props.setActiveMenu(props.menuInfo);
+    } else {
+      openSubMenu = true;
+      //props.setActiveMenu(props.menuInfo);
+    }
   };
 
   const navigate = useNavigate();
   const clickMenu = () => {
     props.setActiveMenu(props.menuInfo);
-    navigate(props.menuInfo.path, {});
+    navigate(props.menuInfo.path, { replace: true });
   };
 
   // 无孩子即为菜单的叶子节点
