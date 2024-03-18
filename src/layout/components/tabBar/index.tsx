@@ -1,12 +1,12 @@
 import { A } from "@solidjs/router";
 import { ParentProps, type Component } from "solid-js";
 import { AiFillCloseCircle, AiOutlineClose } from "solid-icons/ai";
-import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
+import { useSysMenuStore } from "@/store/system/menu";
 
 export interface TabBarProps extends ParentProps {}
 
 const TabBar: Component<TabBarProps> = props => {
-  const tabBarList = useSysMenuTabBarStore(state => state.tabBarList);
+  const tabBarList = useSysMenuStore(state => state.tabBarList);
 
   return (
     <>

@@ -8,11 +8,10 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "solid-icons/ai";
 import "./index.scss";
 import { loginApi } from "@/api/modules/login";
 import { useUserInfoStore } from "@/store/system/user";
-import { Login } from "@/interface/login";
 import { useNavigate } from "@solidjs/router";
 import { getMenuBreadcrumb } from "@/utils/menu";
-import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
 import { SysUser } from "@/interface/system/user";
+import { useSysMenuStore } from "@/store/system/menu";
 
 const App: Component = () => {
   const userForm = $signal({
@@ -23,13 +22,13 @@ const App: Component = () => {
   let showPassword = $signal(false);
 
   const setUserInfo = useUserInfoStore(state => state.setUserInfo);
-  const setAllMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.setAllMenuBreadcrumb);
+  const setMenuBreadcrumbMap = useSysMenuStore(state => state.setMenuBreadcrumbMap);
 
   const navigate = useNavigate();
   const login = async () => {
     const userInfo: SysUser.IUserInfo = await loginApi({ username: userForm.username, password: userForm.password });
     setUserInfo(userInfo);
-    setAllMenuBreadcrumb(getMenuBreadcrumb(userInfo.menuList));
+    setMenuBreadcrumbMap(getMenuBreadcrumb(userInfo.menuList));
     navigate("/");
   };
   const reg = () => {};

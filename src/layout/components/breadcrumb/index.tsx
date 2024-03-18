@@ -1,14 +1,14 @@
-import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
 import { ParentProps, type Component } from "solid-js";
 import { RiSystemApps2Fill } from "solid-icons/ri";
 import { AiOutlineRight } from "solid-icons/ai";
 import { MenuTypeEnum } from "@/utils/enums/menu";
 import { A } from "@solidjs/router";
+import { useSysMenuStore } from "@/store/system/menu";
 
 export interface BreadcrumbProps extends ParentProps {}
 
 const Breadcrumb: Component<BreadcrumbProps> = props => {
-  const breadcrumbList = useSysMenuBreadcrumbStore(state => state.breadcrumb);
+  const breadcrumbList = useSysMenuStore(state => state.breadcrumbList);
 
   return (
     <>

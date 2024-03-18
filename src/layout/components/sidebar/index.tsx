@@ -4,10 +4,8 @@ import { ParentProps, type Component, createSignal, createEffect } from "solid-j
 import Menu from "../menu/Menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
 //import { watch } from "solidjs-use";
-import { useSysMenuBreadcrumbStore } from "@/store/system/menu/breadcrumbStore";
-import { useSysMenuTabBarStore } from "@/store/system/menu/tabBarStore";
 import { SysMenu } from "@/interface/system/menu";
-import { useSysAllMenuBreadcrumb } from "@/store/system/menu/allMenuBreadcrumbStore";
+import { useSysMenuStore } from "@/store/system/menu";
 
 interface SidebarProps extends ParentProps {}
 
@@ -16,8 +14,8 @@ const Sidebar: Component<SidebarProps> = props => {
   const menuList = userInfo.menuList || [];
   const [activeMenu, setActiveMenu] = createSignal<SysMenu.MenuLayout>(); // 激活的菜单
 
-  const setBreadcrumb = useSysMenuBreadcrumbStore(state => state.setBreadcrumb);
-  const addTabBar = useSysMenuTabBarStore(state => state.addTabBar);
+  const setBreadcrumb = useSysMenuStore(state => state.setBreadcrumb);
+  const addTabBar = useSysMenuStore(state => state.addTabBar);
 
   const selectMenu = (menu: SysMenu.MenuLayout) => {
     setActiveMenu({ ...menu });
