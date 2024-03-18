@@ -3,7 +3,7 @@ import TabBar from "../tabBar";
 
 export interface MainProps extends ParentProps {}
 
-const Main: Component<MainProps> = (props) => {
+const Main: Component<MainProps> = props => {
   return (
     <>
       <div>

@@ -14,7 +14,7 @@ export default function Desktop() {
   let dateTime = $signal({
     time: "",
     date: "",
-    week: 0,
+    week: 0
   });
   let isShowAppDashboard = $signal(false);
   let searchContent = $signal("");
@@ -33,7 +33,7 @@ export default function Desktop() {
     dateTime = {
       time: now.format("HH:mm"),
       date: now.format("YYYY 年 MM 月 DD 日"),
-      week: now.day(),
+      week: now.day()
     };
   };
 
@@ -47,7 +47,7 @@ export default function Desktop() {
 
   const filterApp = (content: string) => {
     // TODO 根据查找条件检索应用
-  }
+  };
 
   const searchIconClick = (e: Event) => {
     filterApp(searchContent);
@@ -58,10 +58,7 @@ export default function Desktop() {
     <>
       {/* bg-[url(${bgImage})] */}
       <Show when={!isShowAppDashboard}>
-        <div
-          class={`desktop h-screen w-screen bg-cover`}
-          style={{ "background-image": `url(${bgImage})` }}
-        >
+        <div class={`desktop h-screen w-screen bg-cover`} style={{ "background-image": `url(${bgImage})` }}>
           <div class="datetime text-white flex flex-col items-center">
             <div class="text-6xl font-medium">{dateTime.time}</div>
             <div class="text-xl font-bold mt-2">
@@ -72,7 +69,9 @@ export default function Desktop() {
           <div class="h-full w-1/2 py-4 px-2">
             <AppBoard />
           </div>
-          <div class="header-right mt-2 mr-2 text-white"><Avatar /></div>
+          <div class="header-right mt-2 mr-2 text-white">
+            <Avatar />
+          </div>
           <div
             class="app-dashboard-btn text-white bg-[#171b24] px-4 py-2 rounded-lg flex justify-center items-center"
             onclick={() => (isShowAppDashboard = true)}

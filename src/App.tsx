@@ -1,7 +1,6 @@
 import type { Component } from "solid-js";
-import { Navigate, Router } from "@solidjs/router";
+import { Router } from "@solidjs/router";
 import routes from "./router";
-import routerGuard from "./router/guard";
 import staticRoute from "./router/staticRouters";
 import "./index.css";
 

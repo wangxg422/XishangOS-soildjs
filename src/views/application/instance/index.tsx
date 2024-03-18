@@ -2,10 +2,10 @@ import { ParentProps, type Component } from "solid-js";
 
 export interface AppInstanceProps extends ParentProps {}
 
-const AppInstance: Component<AppInstanceProps> = (props) => {
+const AppInstance: Component<AppInstanceProps> = props => {
   return (
     <>
-    <div>AppInstance</div>
+      <div>AppInstance</div>
     </>
   );
 };

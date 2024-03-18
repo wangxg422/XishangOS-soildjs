@@ -3,7 +3,7 @@ import Avatar from "@/layout/components/avatar";
 
 export interface HeaderRightProps extends ParentProps {}
 
-const HeaderRight: Component<HeaderRightProps> = (props) => {
+const HeaderRight: Component<HeaderRightProps> = props => {
   return (
     <>
       <Avatar />

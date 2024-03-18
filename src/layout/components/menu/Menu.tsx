@@ -14,7 +14,7 @@ interface MenuProps extends ParentProps {
   setActiveMenu: (menu: SysMenu.MenuLayout) => void;
 }
 
-const Menu: Component<MenuProps> = (props) => {
+const Menu: Component<MenuProps> = props => {
   let openSubMenu = $signal(false);
 
   const clickDir = () => {
@@ -32,7 +32,7 @@ const Menu: Component<MenuProps> = (props) => {
   const hasChildren = props.menuInfo.children && props.menuInfo.children.length !== 0;
 
   const paddingLeft = {
-    "padding-left": `${props.depth * 10 * 0.8}px`,
+    "padding-left": `${props.depth * 10 * 0.8}px`
   };
   return (
     <>
@@ -51,14 +51,9 @@ const Menu: Component<MenuProps> = (props) => {
           </div>
           <Show when={openSubMenu}>
             <For each={props.menuInfo.children}>
-              {(m) => (
+              {m => (
                 <div class="w-full">
-                  <Menu
-                    menuInfo={m}
-                    depth={props.depth + 1}
-                    activeMenu={props.activeMenu}
-                    setActiveMenu={props.setActiveMenu}
-                  />
+                  <Menu menuInfo={m} depth={props.depth + 1} activeMenu={props.activeMenu} setActiveMenu={props.setActiveMenu} />
                 </div>
               )}
             </For>
@@ -81,9 +76,7 @@ const Menu: Component<MenuProps> = (props) => {
         >
           <div class="h-full w-full flex justify-start items-center" style={paddingLeft}>
             {props.menuInfo.meta.icon ? <div></div> : <RiSystemApps2Fill />}
-            <div class="ml-2">
-              {props.menuInfo.meta.title}
-            </div>
+            <div class="ml-2">{props.menuInfo.meta.title}</div>
           </div>
         </div>
       </Show>

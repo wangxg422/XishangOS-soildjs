@@ -9,7 +9,7 @@ import Main from "../components/main";
 
 export interface VerticalLayoutProps extends ParentProps {}
 
-const VerticalLayout: Component<VerticalLayoutProps> = (props) => {
+const VerticalLayout: Component<VerticalLayoutProps> = props => {
   return (
     <>
       <div class="vertical-layout w-screen h-screen">

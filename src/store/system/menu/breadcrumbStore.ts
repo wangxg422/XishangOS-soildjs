@@ -11,27 +11,25 @@ export interface SysMenuBreadcrumbStore {
 export const useSysMenuBreadcrumbStore = createWithStore(
   devtools(
     persist<SysMenuBreadcrumbStore>(
-      (set) => ({
+      set => ({
         breadcrumb: [],
         setBreadcrumb: (menuName: string) =>
           set(() => {
-            const allMenuBreadcrumb = useSysAllMenuBreadcrumb(
-              (state) => state.allMenuBreadcrumb
-            );
+            const allMenuBreadcrumb = useSysAllMenuBreadcrumb(state => state.allMenuBreadcrumb);
             console.log("all:", allMenuBreadcrumb);
             console.log("name:", menuName);
             console.log("bread:", allMenuBreadcrumb[menuName]);
             return { breadcrumb: allMenuBreadcrumb[menuName] };
-          }),
+          })
       }),
       {
         name: "menuBreadcrumb",
-        storage: createJSONStorage(() => localStorage),
+        storage: createJSONStorage(() => localStorage)
       }
     ),
     {
       enabled: false,
-      name: "menuBreadcrumb",
+      name: "menuBreadcrumb"
     }
   )
 );

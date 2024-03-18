@@ -9,26 +9,26 @@ export default function AppBoard() {
   const getAppInstanceList = async () => {
     const res = await desktopAppApi();
     appList = res;
-  }
+  };
   onMount(() => {
     getAppInstanceList();
   });
 
   const gridStyle = {
-    "display": "grid",
+    display: "grid",
     "grid-auto-flow": "column",
     "grid-template-rows": `repeat(auto-fill, 92px)`,
-    "gap": "20px",
+    gap: "20px",
     "justify-content": "flex-start",
     "align-items": "center",
     "justify-items": "center",
     "align-content": "space-between"
-  }
+  };
   return (
     <>
       <div class="h-full w-full" style={gridStyle}>
         <For each={appList}>
-          {(app) => (
+          {app => (
             <div>
               <AppInstance appInstanceInfo={app} />
             </div>

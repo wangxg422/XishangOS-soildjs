@@ -1,12 +1,10 @@
 import { ConfigEnv, UserConfig, defineConfig, loadEnv } from "vite";
-import solidPlugin from "vite-plugin-solid";
-import solidLabels from "babel-plugin-solid-labels";
 import path from "node:path";
 import { wrapperEnv } from "./build/env";
 import { createProxy } from "./build/proxy";
 import dayjs from "dayjs";
 import pkg from "./package.json";
-// import devtools from 'solid-devtools/vite';
+import { createVitePlugins } from "./build/plugin";
 
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
@@ -21,20 +19,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   return {
     base: viteEnv.VITE_PUBLIC_PATH || "/",
     root,
-    plugins: [
-      /* 
-    Uncomment the following line to enable solid-devtools.
-    For more info see https://github.com/thetarnav/solid-devtools/tree/main/packages/extension#readme
-    */
-      // devtools(),
-      solidPlugin({
-        babel: {
-          plugins: [
-            [solidLabels, { dev: process.env.NODE_ENV !== "production" }],
-          ],
-        },
-      }),
-    ],
+    plugins: createVitePlugins(viteEnv),
     resolve: {
       alias: [
         {

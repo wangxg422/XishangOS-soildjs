@@ -6,7 +6,7 @@ import { SysLayoutEnum } from "@/utils/enums/layout";
 
 export interface LayoutProps extends ParentProps {}
 
-const Layout: Component<LayoutProps> = (props) => {
+const Layout: Component<LayoutProps> = props => {
   const layout: string = $signal(SysLayoutEnum.CLASSIC);
   return (
     <>

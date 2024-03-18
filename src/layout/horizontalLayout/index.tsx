@@ -8,7 +8,7 @@ import Main from "../components/main";
 
 export interface HorizontalLayoutProps extends ParentProps {}
 
-const HorizontalLayout: Component<HorizontalLayoutProps> = (props) => {
+const HorizontalLayout: Component<HorizontalLayoutProps> = props => {
   return (
     <>
       <div class="horizontal-layout w-screen h-screen">
@@ -16,11 +16,19 @@ const HorizontalLayout: Component<HorizontalLayoutProps> = (props) => {
           <div class="h-full">
             <HeaderLeft />
           </div>
-          <div class=""><HeaderMid /></div>
-          <div><HeaderRight /></div>
+          <div class="">
+            <HeaderMid />
+          </div>
+          <div>
+            <HeaderRight />
+          </div>
         </div>
-        <div class="main"><Main>{props.children}</Main></div>
-        <div class="footer"><Footer /></div>
+        <div class="main">
+          <Main>{props.children}</Main>
+        </div>
+        <div class="footer">
+          <Footer />
+        </div>
       </div>
     </>
   );

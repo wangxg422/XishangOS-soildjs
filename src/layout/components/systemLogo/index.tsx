@@ -3,7 +3,7 @@ import logo from "@/assets/images/logo.svg";
 
 export interface HeaderLeftProps extends ParentProps {}
 
-const HeaderLeft: Component<HeaderLeftProps> = (props) => {
+const HeaderLeft: Component<HeaderLeftProps> = props => {
   return (
     <>
       <div class="header-left h-full flex justify-center items-center">

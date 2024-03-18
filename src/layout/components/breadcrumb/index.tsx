@@ -7,8 +7,8 @@ import { A } from "@solidjs/router";
 
 export interface BreadcrumbProps extends ParentProps {}
 
-const Breadcrumb: Component<BreadcrumbProps> = (props) => {
-  const breadcrumbList = useSysMenuBreadcrumbStore((state) => state.breadcrumb);
+const Breadcrumb: Component<BreadcrumbProps> = props => {
+  const breadcrumbList = useSysMenuBreadcrumbStore(state => state.breadcrumb);
 
   return (
     <>

@@ -9,25 +9,25 @@ export default function AppDashboard() {
   const getAllAppInstance = async () => {
     const res = await allAppApi();
     appList = res;
-  }
+  };
   onMount(() => {
     getAllAppInstance();
   });
 
   const gridStyle = {
-    "display": "grid",
+    display: "grid",
     "grid-template-columns": `repeat(auto-fill, 120px)`,
-    "gap": "24px",
+    gap: "24px",
     "justify-content": "space-between",
     "align-items": "center",
     "justify-items": "center"
-  }
+  };
 
   return (
     <>
       <div style={gridStyle}>
         <For each={appList}>
-          {(app) => (
+          {app => (
             <div>
               <AppInstance appInstanceInfo={app} />
             </div>

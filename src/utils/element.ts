@@ -6,5 +6,5 @@
    以确保它是 HTMLInputElement 它确实具有 value 属性：
  */
 export function getInputValue(e: Event) {
-    return (e.target as HTMLInputElement).value;
+  return (e.target as HTMLInputElement).value;
 }

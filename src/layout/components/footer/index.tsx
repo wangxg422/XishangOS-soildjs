@@ -2,10 +2,10 @@ import { ParentProps, type Component } from "solid-js";
 
 export interface FooterProps extends ParentProps {}
 
-const Footer: Component<FooterProps> = (props) => {
+const Footer: Component<FooterProps> = props => {
   return (
     <>
-    <div class="w-full h-full border-t flex justify-center items-center">XishangOS</div>
+      <div class="w-full h-full border-t flex justify-center items-center">XishangOS</div>
     </>
   );
 };

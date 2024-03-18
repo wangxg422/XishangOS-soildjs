@@ -10,15 +10,13 @@ import { SysMenu } from "@/interface/system/menu";
 
 interface SidebarProps extends ParentProps {}
 
-const Sidebar: Component<SidebarProps> = (props) => {
-  const userInfo = useUserInfoStore((state) => state.userInfo);
+const Sidebar: Component<SidebarProps> = props => {
+  const userInfo = useUserInfoStore(state => state.userInfo);
   const menuList = userInfo.menuList || [];
   const [activeMenu, setActiveMenu] = createSignal<SysMenu.MenuLayout>(); // 激活的菜单
 
-  const setBreadcrumb = useSysMenuBreadcrumbStore(
-    (state) => state.setBreadcrumb
-  );
-  const addTabBar = useSysMenuTabBarStore((state) => state.addTabBar);
+  const setBreadcrumb = useSysMenuBreadcrumbStore(state => state.setBreadcrumb);
+  const addTabBar = useSysMenuTabBarStore(state => state.addTabBar);
 
   const selectMenu = (menu: SysMenu.MenuLayout) => {
     setActiveMenu(menu);
@@ -49,7 +47,7 @@ const Sidebar: Component<SidebarProps> = (props) => {
         name: menu.name,
         path: menu.path,
         title: menu.meta.title,
-        icon: menu.meta.icon,
+        icon: menu.meta.icon
       });
     }
   });
@@ -62,16 +60,7 @@ const Sidebar: Component<SidebarProps> = (props) => {
           <A href="/desktop">返回桌面</A>
         </div>
         <div class="w-full flex flex-col justify-start justify-items-center content-start items-start cursor-pointer">
-          <For each={menuList}>
-            {(m) => (
-              <Menu
-                menuInfo={m}
-                depth={1}
-                activeMenu={activeMenu()}
-                setActiveMenu={selectMenu}
-              />
-            )}
-          </For>
+          <For each={menuList}>{m => <Menu menuInfo={m} depth={1} activeMenu={activeMenu()} setActiveMenu={selectMenu} />}</For>
         </div>
       </div>
     </>
