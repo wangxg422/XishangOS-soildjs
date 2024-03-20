@@ -16,13 +16,16 @@ const Menu: Component<MenuProps> = props => {
   return (
     <>
       <Show when={props.menuInfo.type === MenuTypeEnum.DIR}>
-        <For each={props.menuInfo.children}>
-          {m => (
-            <div class="w-full">
-              <SubMenu menuInfo={m} depth={props.depth + 1} activeMenu={props.activeMenu} setActiveMenu={props.setActiveMenu} />
-            </div>
-          )}
-        </For>
+        {
+          <div class="w-full">
+            <SubMenu
+              menuInfo={props.menuInfo}
+              depth={props.depth + 1}
+              activeMenu={props.activeMenu}
+              setActiveMenu={props.setActiveMenu}
+            />
+          </div>
+        }
       </Show>
       <Show when={props.menuInfo.type === MenuTypeEnum.MENU}>
         <MenuItem
