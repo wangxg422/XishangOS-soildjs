@@ -1,7 +1,7 @@
 import { useUserInfoStore } from "@/store/system/user";
 import { A } from "@solidjs/router";
 import { ParentProps, type Component, createSignal, createEffect } from "solid-js";
-import Menu from "../menu/Menu";
+import Menu from "../menu";
 import { TiDeviceDesktop } from "solid-icons/ti";
 //import { watch } from "solidjs-use";
 import { SysMenu } from "@/interface/system/menu";
