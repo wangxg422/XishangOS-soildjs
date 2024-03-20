@@ -23,7 +23,7 @@ export const useUserInfoStore = createWithStore(
       }),
       {
         name: "userInfoStore",
-        storage: createJSONStorage(() => sessionStorage)
+        storage: createJSONStorage(() => localStorage)
       }
     ),
     {

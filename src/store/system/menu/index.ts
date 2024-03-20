@@ -34,7 +34,7 @@ export const useSysMenuStore = createWithStore(
       }),
       {
         name: "sysMenuStore",
-        storage: createJSONStorage(() => sessionStorage)
+        storage: createJSONStorage(() => localStorage)
       }
     ),
     {
